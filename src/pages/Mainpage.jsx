@@ -1,0 +1,18 @@
+import styled from "styled-components"
+
+
+const Mainpage = ()=>{
+
+    return <Container>
+        메인페이지
+    </Container>
+}
+
+export default Mainpage
+
+const Container = styled.div`
+width:600px;
+height:100%;
+background-color:red;
+`
+
