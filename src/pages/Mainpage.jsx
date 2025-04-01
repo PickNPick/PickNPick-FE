@@ -11,7 +11,6 @@ const Mainpage = ()=>{
 export default Mainpage
 
 const Container = styled.div`
-width:600px;
 height:100%;
 background-color:red;
 `

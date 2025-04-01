@@ -18,6 +18,7 @@ body, html, #root {
     font-family: "Pretendard";
   }
   #root {
+    width:100%;
     max-width: 600px;
     margin: 0 auto;
     background-color: white;
