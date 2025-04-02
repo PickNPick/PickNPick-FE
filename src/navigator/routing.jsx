@@ -1,9 +1,12 @@
-import Mainpage from "../pages/Mainpage"
+import Loginpage from "../pages/Loginpage"
+
+
+
 
 const routes = [
     {
         path:"/",
-        element:<Mainpage/>
+        element:<Loginpage/>
     },
 ]
 
