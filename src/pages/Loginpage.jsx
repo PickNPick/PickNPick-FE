@@ -2,30 +2,42 @@ import styled from "styled-components"
 import axios from "axios"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { theme } from "../styles/themes"
+import '../styles/fonts.css'
+import img1 from '../assets/loginpageimg/logoimg.png'
+import img2 from '../assets/loginpageimg/mainimg.png'
 
 
-
-const Loginpage = ()=>{
+const Loginpage = () => {
     const navigator = useNavigate();
-    useEffect(()=>{
+
+    const logoimg = img1
+    const mainimg = img2
+
+
+    useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const token = params.get('token')
-        if(token != null){
-            navigator(`/mainpage?token=${token}`,{replace:true})
+        if (token != null) {
+            navigator(`/mainpage?token=${token}`, { replace: true })
         }
-    },[])
+    }, [])
 
-    const login = async()=>{
-       window.location.href="http://localhost:3000/googlelogin"
+    const login = async () => {
+        window.location.href = "http://localhost:3000/googlelogin"
     }
 
     return <Container>
-        <Logosmall></Logosmall>
-        <Logo></Logo>
-        <Imgcontainer></Imgcontainer>
-        <Loginbtn onClick={()=>{
-            login();    
-        }}></Loginbtn>
+        <Logosmall>마음에 드는 친구 찾기</Logosmall>
+        <Logo>
+            <img src={logoimg} style={{width:"100%",height:"100%"}}></img>
+        </Logo>
+        <Imgcontainer>
+            <img src={mainimg} style={{width:"100%",height:"100%"}}></img>
+        </Imgcontainer>
+        <Loginbtn onClick={() => {
+            login();
+        }}>구글아이디로 로그인 하기</Loginbtn>
     </Container>
 }
 
@@ -38,18 +50,21 @@ justify-content:center;
 position:relative;
 `
 const Logosmall = styled.div`
-width:30%;
-height:3%;
-top:17%;
-background-color:red;
+width:42%;
+height:10%;
+top:14%;
+color:${theme.Sub1};
+
 position:absolute;
+font-family: HakgyoansimChilpanjiugaeTTF-B;
+font-weight:600;
+font-size:22px;
 `
 const Logo = styled.div`
-height:15%;
-width:42%;
-top:21%;
+height:18%;
+width:40%;
+top:19%;
 position:absolute;
-background-color:red;
 `
 
 const Imgcontainer = styled.div`
@@ -57,7 +72,6 @@ position:absolute;
 width:100%;
 height:40%;
 top:42%;
-background-color:red;
 `
 
 const Loginbtn = styled.button`
@@ -65,10 +79,27 @@ position:absolute;
 width:80%;
 height:6%;
 top:90%;
-background-color:red;
+background-color:${theme.Sub1};
+font-family:Pretendard-Regular;
+font-weight:700;
+font-size:16px;
+outline: none;
+box-shadow: none;
+color:white;
+&:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  &:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
 &:hover{
 transition :1s ease;
-background-color:yellow;
+opacity:0.7;
 }
 `
 

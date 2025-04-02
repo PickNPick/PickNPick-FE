@@ -49,10 +49,9 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:${(props)=>(props.clicked ? theme.Sub1:theme.Sub2)};
+font-family:Dela Gothic One;
 outline: none;
 box-shadow: none;
-font-family:Dela Gothic One;
-
 &:focus {
     outline: none !important;
     box-shadow: none !important;
