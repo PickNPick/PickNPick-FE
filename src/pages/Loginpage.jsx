@@ -1,11 +1,22 @@
 import styled from "styled-components"
+import axios from "axios"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+
 
 
 const Loginpage = ()=>{
+    const navigator = useNavigate();
+    useEffect(()=>{
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token')
+        if(token != null){
+            navigator(`/mainpage?token=${token}`,{replace:true})
+        }
+    },[])
 
-
-    const login = ()=>{
-       
+    const login = async()=>{
+       window.location.href="http://localhost:3000/googlelogin"
     }
 
     return <Container>
@@ -13,7 +24,7 @@ const Loginpage = ()=>{
         <Logo></Logo>
         <Imgcontainer></Imgcontainer>
         <Loginbtn onClick={()=>{
-
+            login();    
         }}></Loginbtn>
     </Container>
 }
@@ -35,7 +46,7 @@ position:absolute;
 `
 const Logo = styled.div`
 height:15%;
-width:30%;
+width:42%;
 top:21%;
 position:absolute;
 background-color:red;
@@ -52,8 +63,8 @@ background-color:red;
 const Loginbtn = styled.button`
 position:absolute;
 width:80%;
-height:10%;
-top:85%;
+height:6%;
+top:90%;
 background-color:red;
 &:hover{
 transition :1s ease;
