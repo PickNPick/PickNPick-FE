@@ -19,9 +19,9 @@ body, html, #root {
   }
   #root {
     width:100%;
-    max-width: 600px;
+    max-width: 393px;
     margin: 0 auto;
-    background-color: white;
+    background-color: #FFF1E6;
   }
 `;
 export default GlobalStyles;
