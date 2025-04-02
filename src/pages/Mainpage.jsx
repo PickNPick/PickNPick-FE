@@ -1,6 +1,7 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { theme } from "../styles/themes";
+import '../styles/fonts.css'
 
 
 const Mainpage = ()=>{
@@ -50,6 +51,8 @@ justify-content:center;
 color:${(props)=>(props.clicked ? theme.Sub1:theme.Sub2)};
 outline: none;
 box-shadow: none;
+font-family:Dela Gothic One;
+
 &:focus {
     outline: none !important;
     box-shadow: none !important;
