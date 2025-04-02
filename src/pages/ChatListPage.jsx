@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ToggleBar from '../components/ToggleBar';
-import TestImage from '../assets/react.svg';
+import TestImage from '../assets/testimage.png';
 import UserListItem from '../components/UserListItem';
 import UserRequestItem from '../components/UserRequestItem';
 
