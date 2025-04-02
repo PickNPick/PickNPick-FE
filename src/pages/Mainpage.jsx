@@ -13,7 +13,6 @@ const Mainpage = ()=>{
     }
 
     return <Container>
-        {}
         <Navbar>
             <Btn style={{marginLeft:"10%"}} onClick={()=>{btnclick(0)}} clicked={categorybtn[0]}>Pick!</Btn>
             <Btn style={{marginLeft:"10%"}} onClick={()=>{btnclick(1)}} clicked={categorybtn[1]}>Chating</Btn>
