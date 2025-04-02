@@ -2,6 +2,7 @@ import { useState } from "react"
 import styled from "styled-components"
 import { theme } from "../styles/themes";
 import '../styles/fonts.css'
+import Pickpage from "./Pickpage";
 
 
 const Mainpage = ()=>{
@@ -12,8 +13,13 @@ const Mainpage = ()=>{
         else if(i == 1)setcategorybtn([0,1,0])
         else setcategorybtn([0,0,1])
     }
-
     return <Container>
+        <Container2>
+            {categorybtn[0] === 1 && <Pickpage></Pickpage>} 
+            {categorybtn[1] === 1 && <Container style={{backgroundColor:"purple"}}></Container>}
+            {categorybtn[2] === 1 && <Container style={{backgroundColor:"pink"}}></Container>}
+        </Container2>
+        <Block></Block>
         <Navbar>
             <Btn style={{marginLeft:"10%"}} onClick={()=>{btnclick(0)}} clicked={categorybtn[0]}>Pick!</Btn>
             <Btn style={{marginLeft:"10%"}} onClick={()=>{btnclick(1)}} clicked={categorybtn[1]}>Chating</Btn>
@@ -27,6 +33,16 @@ export default Mainpage
 const Container = styled.div`
 width:100%;
 height:100%;
+position:relative;
+`
+const Container2 = styled.div`
+width:100%;
+height:90%;
+position:relative;
+`
+const Block =styled.div`
+width:100%;
+height:10%;
 position:relative;
 `
 
