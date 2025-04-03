@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import { theme } from "../styles/themes";
 import '../styles/fonts.css'
@@ -6,7 +6,17 @@ import Pickpage from "./Pickpage";
 
 
 const Mainpage = ()=>{
+
     const [categorybtn,setcategorybtn] = useState([1,0,0]);
+    const [token,settoken] = useState("")
+
+    useEffect(()=>{
+        const query = new URLSearchParams(window.location.search);
+        const token = query.get('token');
+        settoken(token)
+    },[])
+
+
 
     const btnclick = (i)=>{
         if(i == 0)setcategorybtn([1,0,0])
