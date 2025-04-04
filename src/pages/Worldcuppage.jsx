@@ -49,7 +49,7 @@ const Worldcuppage = () => {
         return;
       }
       console.error(err);
-      //navigator("/mainpage", { replace: true })
+      navigator("/mainpage", { replace: true })
       if (err.response?.data?.error) alert(err.response.data.error);
     }
   };
