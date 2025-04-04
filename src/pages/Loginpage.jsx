@@ -6,13 +6,14 @@ import { theme } from "../styles/themes"
 import '../styles/fonts.css'
 import img1 from '../assets/loginpageimg/logoimg.png'
 import img2 from '../assets/loginpageimg/mainimg.png'
+import img3 from '../assets/loginpageimg/Group 3.png'
 
 
 const Loginpage = () => {
     const navigator = useNavigate();
 
     const logoimg = img1
-    const mainimg = img2
+    const mainimg = img3
 
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const Loginpage = () => {
     return <Container>
         <Logosmall>마음에 드는 친구 찾기</Logosmall>
         <Logo>
-            <img src={logoimg} style={{width:"100%",height:"100%"}}></img>
+            <img src={logoimg} ></img>
         </Logo>
         <Imgcontainer>
             <img src={mainimg} style={{width:"100%",height:"100%"}}></img>
