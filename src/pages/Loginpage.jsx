@@ -6,14 +6,15 @@ import { theme } from "../styles/themes"
 import '../styles/fonts.css'
 import img1 from '../assets/loginpageimg/logoimg.png'
 import img2 from '../assets/loginpageimg/mainimg.png'
-import img3 from '../assets/loginpageimg/Group 3.png'
+import img3 from '../assets/loginpageimg/mainimg2.png'
 
 
 const Loginpage = () => {
     const navigator = useNavigate();
 
     const logoimg = img1
-    const mainimg = img3
+    const mainimg = img2
+    const mainimg2 = img3
 
 
     useEffect(() => {
@@ -34,6 +35,7 @@ const Loginpage = () => {
         <Logo>
             <img src={logoimg} ></img>
         </Logo>
+        <img src={img3}  style={{position:"absolute",top:"55%",left:"41.5%",zIndex:"5"}}></img>
         <Imgcontainer>
             <img src={mainimg} style={{width:"100%",height:"100%"}}></img>
         </Imgcontainer>
@@ -74,6 +76,7 @@ position:absolute;
 width:100%;
 height:40%;
 top:42%;
+z-index:1;
 `
 
 const Loginbtn = styled.button`
