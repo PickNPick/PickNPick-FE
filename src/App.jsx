@@ -4,7 +4,7 @@ import './App.css';
 import GlobalStyles from './styles/GlobalStyles';
 import { Route, Routes } from "react-router-dom";
 import routes from './navigator/routing';
-import socket from './socket'; // socket.js 파일에서 export한 socket 인스턴스
+import socket from './components/socket'; // socket.js 파일에서 export한 socket 인스턴스
 import Livemessage from './components/Livemessage';
 
 function App() {
