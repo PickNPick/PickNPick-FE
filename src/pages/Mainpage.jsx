@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { theme } from "../styles/themes";
 import '../styles/fonts.css'
 import Pickpage from "./Pickpage";
+import ChatListPage from "./ChatListPage";
 
 
 const Mainpage = ()=>{
@@ -11,6 +12,7 @@ const Mainpage = ()=>{
     const [token,settoken] = useState("")
 
     useEffect(()=>{
+        console.log(localStorage.getItem("token"))
         const query = new URLSearchParams(window.location.search);
         const token = query.get('token');
         settoken(token)
@@ -26,7 +28,7 @@ const Mainpage = ()=>{
     return <Container>
         <Container2>
             {categorybtn[0] === 1 && <Pickpage></Pickpage>} 
-            {categorybtn[1] === 1 && <Container style={{backgroundColor:"purple"}}></Container>}
+            {categorybtn[1] === 1 && <ChatListPage></ChatListPage>}
             {categorybtn[2] === 1 && <Container style={{backgroundColor:"pink"}}></Container>}
         </Container2>
         <Block></Block>
