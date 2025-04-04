@@ -19,7 +19,8 @@ const Loginpage = () => {
         const params = new URLSearchParams(window.location.search);
         const token = params.get('token')
         if (token != null) {
-            navigator(`/mainpage?token=${token}`, { replace: true })
+            localStorage.setItem("token",token);
+            navigator(`/mainpage`, { replace: true })
         }
     }, [])
 
