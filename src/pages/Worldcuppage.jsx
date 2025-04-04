@@ -6,6 +6,7 @@ import loadingimg from "../assets/loadingimg/loadingimg.png";
 import axiosInstance from "../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 const Worldcuppage = () => {
   const navigator = useNavigate();
@@ -21,6 +22,7 @@ const Worldcuppage = () => {
   const [currentinfo, setcurrentinfo] = useState([{}, {}]);
   const [tournement, settournement] = useState(32);
   const [curtournement, setcurtournement] = useState(0);
+  const [isoverlay, setisoverlay] = useState(false)
 
   useEffect(() => {
     getdata();
@@ -47,7 +49,7 @@ const Worldcuppage = () => {
         return;
       }
       console.error(err);
-      navigator("/mainpage", { replace: true });
+      navigator("/mainpage", { replace: true })
       if (err.response?.data?.error) alert(err.response.data.error);
     }
   };
@@ -110,10 +112,26 @@ const Worldcuppage = () => {
     }
   };
 
+  const clickback = () => {
+    setisoverlay(true)
+  }
+
   return (
     <Container>
+      {isoverlay &&
+        <Overlay>
+          <Overlay_container>
+            <div style={{ fontWeight:"700" ,width: "100%", height: "70%", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid grey" }}>이상형 월드컵을 그만하시겠습니까?</div>
+            <div style={{ width: "100%", height: "30%", display: "flex", flexDirection: "row" }}>
+              <div style={{ width: "50%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { setisoverlay(false) }}>계속하기</div>
+              <div style={{ color:`${theme.Sub1}` ,width: "50%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", borderLeft: "1px solid grey" }} onClick={(() => { navigator("/mainpage", { replace: true }) })}>그만하기</div>
+            </div>
+          </Overlay_container>
+        </Overlay>
+      }
       <Topbar>
-        <img src={img} style={{ width: "10%", height: "50%" }} />
+        <MdOutlineArrowBackIosNew onClick={() => { clickback() }} style={{ position: "absolute", left: "4%", color: `${theme.Sub1}` }} />
+        <img src={img} style={{ width: "10%", height: "50%", position: "absolute", left: "45%" }} />
       </Topbar>
       {isloading ? (
         <Loadingview>
@@ -140,7 +158,30 @@ export default Worldcuppage;
 const Container = styled.div`
   width: 100%;
   height: 100%;
+  position:relative;
 `;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index:9000;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Overlay_container = styled.div`
+  width:75%;
+  height:20%;
+  background-color:white;
+  font-family: Pretendard-Regular;
+  font-weight: 400;
+  font-size: 16px;
+`
 
 const Loadingview = styled.div`
   width: 100%;
@@ -163,7 +204,7 @@ const Topbar = styled.div`
   background-color: ${theme.Main};
   display: flex;
   align-items: center;
-  justify-content: center;
+  position:relative;
 `;
 
 const CancelBtn = styled.div`
