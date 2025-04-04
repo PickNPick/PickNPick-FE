@@ -18,7 +18,7 @@ const Pickpage = ()=>{
         <Bannerbar>픽앤픽 당신의 이상형을 골라보세요!</Bannerbar>
         <Container>
             <Block onClick={()=>{navigator("/worldcup",{replace : false})}}><Text>이상형 월드컵</Text></Block>
-            <Block onClick={()=>{}}><Text>랜덤 친구 찾기</Text></Block>
+            <Block onClick={()=>{navigator("/randomfriend",{replace : false})}}><Text>랜덤 친구 찾기</Text></Block>
             <Block onClick={()=>{}}><Text>Pick & Pick!!~~</Text></Block>
         </Container>
     </>

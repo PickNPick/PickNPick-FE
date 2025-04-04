@@ -12,7 +12,6 @@ const Mainpage = ()=>{
     const [token,settoken] = useState("")
 
     useEffect(()=>{
-        console.log(localStorage.getItem("token"))
         const query = new URLSearchParams(window.location.search);
         const token = query.get('token');
         settoken(token)
