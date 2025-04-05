@@ -55,9 +55,10 @@ const MessagePage = () => {
 
         socket.on('new_message', ({roomId, message}) => {
             //alert(message);
+            console.log(message);
             setSampleMessage([...sampleMessage, {
                 isMe: false,
-                message
+                message: message.content,
             }]);
         });
 
