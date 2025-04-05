@@ -7,10 +7,12 @@ import ChatBar from '../components/ChatBar';
 import { IoEllipseSharp } from 'react-icons/io5';
 import { theme } from "../styles/themes";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const MessagePage = () => {
     const navigate = useNavigate();
+    const params = useParams();
+    console.log(params.roomId);
 
     const SAMPLE_MESSAGE = [
         { isMe: true, message: "달빛에 두 눈을 적셔, 내 손을 잡고 어디론가 뛰어줘." },

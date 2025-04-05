@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 import MessageListItem from '../components/MessageListItem';
 import styled from 'styled-components';
 import TestImage from '../assets/testimage.png';
-import { useNavigate } from 'react-router-dom';
 import socket from '../components/socket';
 
 const MessageListPage = () => {
     const navigate = useNavigate();
     const [chatRooms, setChatRooms] = useState([]);
     const [loading, setLoading] = useState(true);
-
 
     useEffect(() => {
         // 로컬 스토리지에서 토큰 가져오기
