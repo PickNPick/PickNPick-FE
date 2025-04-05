@@ -94,6 +94,7 @@ const ProfilePage = () => {
       region: Region,
       discription: Discription,
       joinworldcup: Joinworldcup,
+      shortdiscription:Shortdiscription,
     });
     alert("정보 변경 완료");
   };
