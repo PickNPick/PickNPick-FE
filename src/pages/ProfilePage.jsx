@@ -202,6 +202,7 @@ border:none;
   color: ${theme.Sub1};
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE, Edge */
+  background-color: transparent;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -232,6 +233,7 @@ border:none;
   color: ${theme.Sub1};
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE, Edge */
+  background-color: transparent;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -317,7 +319,7 @@ align-items:center;
 font-size: 18px; /* 글자 크기 조정 */
 font-family: HakgyoansimChilpanjiugaeTTF-B;
 font-weight:400;
-color:${theme.Sub1}
+color:${theme.Sub1};
 `
 const Textarea_Large_text = styled.textarea`
   width: 92%;
@@ -337,6 +339,7 @@ const Textarea_Large_text = styled.textarea`
   color: ${theme.Sub1};
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE, Edge */
+  background-color: transparent;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -371,6 +374,7 @@ width:20%;
 font-size: 18px; /* 글자 크기 조정 */
 font-family: HakgyoansimChilpanjiugaeTTF-B;
 font-weight:400;
+background-color: transparent;
 `
 const SwitchContainer = styled.div`
   margin-left:59%;
@@ -424,6 +428,7 @@ border: none;
   font-family: 'Pretendard', sans-serif;
   font-weight:700;
   color:${theme.Sub1};
+  background-color: transparent;
   &:focus {
   border: none; /* 원하는 색상으로 바꿔줘요 */
   outline: none;
@@ -481,6 +486,7 @@ const TextArea = styled.textarea`
   overflow: hidden; /* 넘칠 경우 스크롤 숨기기 */
   text-overflow: ellipsis; /* 넘친 텍스트 잘리게 처리 */
   word-wrap: break-word; /* 단어가 넘칠 때 자동으로 줄바꿈 처리 */
+  background-color: transparent;
 `;
 
 
