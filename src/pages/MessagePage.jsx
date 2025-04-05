@@ -8,6 +8,7 @@ import { IoEllipseSharp } from 'react-icons/io5';
 import { theme } from "../styles/themes";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useNavigate, useParams } from 'react-router-dom';
+import socket from '../components/socket';
 
 const MessagePage = () => {
     const navigate = useNavigate();
@@ -32,11 +33,34 @@ const MessagePage = () => {
     const lastRef = useRef(null);
 
     const onChat = (message) => {
+        // JWT 토큰에서 이메일 추출
+        const token = localStorage.getItem("token");
+        const payload = token.split('.')[1];
+        const decodedPayload = JSON.parse(atob(payload));
+        const userEmail = decodedPayload.email;
+
+        socket.emit("send_message", {
+            "roomId": params.roomId,
+            "sender": userEmail,
+            "content": message,
+        })
+
         setSampleMessage([...sampleMessage, {
             isMe: true,
             message
         }]);
     };
+
+    useEffect(() => {
+
+        socket.on('new_message', ({roomId, message}) => {
+            alert(message);
+        });
+
+        return () => {
+            socket.off('new_message');
+        }
+    }, []);
 
     // 메시지가 업데이트될 때 아래로 스크롤
     useEffect(() => {
