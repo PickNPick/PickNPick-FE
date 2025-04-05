@@ -98,4 +98,15 @@ const EmptyMessage = styled.div`
     color: #666;
 `;
 
+const ScrollContainer = styled.div`
+  flex-grow: 1;
+  overflow-y: scroll;
+  padding: 10px 30px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 export default FriendRequestPage;

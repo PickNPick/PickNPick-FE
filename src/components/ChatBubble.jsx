@@ -45,7 +45,7 @@ const MeDiv = styled.div`
     font-size: 1.05rem;
     padding: 8px 13px 8px 13px;
 
-    background-color: #FF6B6B;
+    background-color: #FF5A6D;
     border-radius: 20px;
     text-align: right;
 
