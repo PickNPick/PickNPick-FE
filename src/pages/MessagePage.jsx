@@ -29,7 +29,7 @@ const MessagePage = () => {
         { isMe: false, message: "우리만 남을 때" },
     ];
 
-    let [sampleMessage, setSampleMessage] = useState(SAMPLE_MESSAGE);
+    let [sampleMessage, setSampleMessage] = useState([]);
     const lastRef = useRef(null);
 
     const onChat = (message) => {
@@ -54,7 +54,11 @@ const MessagePage = () => {
     useEffect(() => {
 
         socket.on('new_message', ({roomId, message}) => {
-            alert(message);
+            //alert(message);
+            setSampleMessage([...sampleMessage, {
+                isMe: false,
+                message
+            }]);
         });
 
         return () => {
