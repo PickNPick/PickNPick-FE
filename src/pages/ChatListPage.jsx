@@ -35,11 +35,11 @@ const ChatListPage = () => {
         <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
             onAccept={onAccept} onDecline={onDecline} />
 
-        <ChatBubble isMe={true} message="안녕하세요 테스트 메시지입니다." />
+        <ChatBubble isMe={true} message="안녕하세요 테스트 메시지입니다." isLast />
         <ChatBubble isMe={false} message="안녕하세요 테스트 메시지입니다." profileImage={TestImage} />
         <ChatBubble isMe={false} message="안녕하세요 테스트 메시지입니다." profileImage={TestImage} />
-        <ChatBubble isMe={false} message="긴 말풍선 테스트 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세" profileImage={TestImage} />
-        <ChatBubble isMe={true} message="긴 말풍선 테스트 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세" profileImage={TestImage} />
+        <ChatBubble isMe={false} message="긴 말풍선 테스트 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세" profileImage={TestImage} isLast />
+        <ChatBubble isMe={true} message="달빛에 두 눈을 적셔 내 손을 잡고 어디론가 뛰어줘 거짓말같았던 그 밤을 지나 끝없이 헤맨다 해도" profileImage={TestImage} isLast />
     </>
 }
 
