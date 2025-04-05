@@ -5,6 +5,7 @@ import ProfilePage from "../pages/ProfilePage";
 import Worldcuppage from "../pages/Worldcuppage"
 import Randomfriendpage from "../pages/Randomfriendpage"
 import MessagePage from "../pages/MessagePage";
+import Myfavorite from "../pages/Myfavorite";
 
 const routes = [
     {
@@ -38,6 +39,12 @@ const routes = [
         path: "/message/:roomId",
         element: <MessagePage />
     },
+
+    {
+        path:"/myfavorite",
+        element:<Myfavorite/>
+    }
+
 ]
 
 export default routes
