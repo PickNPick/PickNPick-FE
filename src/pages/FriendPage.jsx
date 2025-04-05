@@ -9,10 +9,10 @@ const FriendPage = () => {
             <div style={{ marginBottom: '16px' }}>
                 <EmailSearchBar/>
             </div>
-            <div className="chat-list-container">
+            <div className="chat-list-container, onClick={handleUserClick}">
                 <UserListItem name="사용자 이름" profile={TestImage} />
             </div>
-            <div className="chat-list-container">
+            <div className="chat-list-container, onClick={handleUserClick}">
                 <UserListItem name="사용자 이름" profile={TestImage} />
             </div>
         </div>

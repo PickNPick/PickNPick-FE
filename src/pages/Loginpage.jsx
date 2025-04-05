@@ -33,7 +33,14 @@ const Loginpage = () => {
     return <Container>
         <Logosmall>마음에 드는 친구 찾기</Logosmall>
         <Logo>
-            <img src={logoimg} ></img>
+        <img
+  src={logoimg}
+  alt="logo"
+  style={{
+    width: "300px",
+    height: "auto"
+  }}
+/>
         </Logo>
         <img src={img3}  style={{position:"absolute",top:"55%",left:"41.5%",zIndex:"5"}}></img>
         <Imgcontainer>
@@ -65,10 +72,14 @@ font-weight:600;
 font-size:22px;
 `
 const Logo = styled.div`
-height:18%;
-width:40%;
-top:19%;
-position:absolute;
+  position: absolute;
+  top: 19%;
+  width: 100%;    // 전체 너비
+  height: 170px;  // 원하는 만큼 키워줌
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 `
 
 const Imgcontainer = styled.div`

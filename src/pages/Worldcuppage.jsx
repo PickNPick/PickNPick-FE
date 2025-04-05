@@ -195,7 +195,7 @@ const Worldcuppage = () => {
       }
       <Topbar>
         <MdOutlineArrowBackIosNew onClick={() => { clickback() }} style={{ position: "absolute", left: "4%", color: `${theme.Sub1}` }} />
-        <img src={img} style={{ width: "10%", height: "50%", position: "absolute", left: "45%" }} />
+        <img src={img} style={{ width: "15%", height: "auto", position: "absolute", left: "42%" }} />
       </Topbar>
       {isloading ? (
         <Loadingview>

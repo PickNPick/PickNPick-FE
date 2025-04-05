@@ -16,7 +16,7 @@ const Pickpage = ()=>{
 
     return <>
         <Topbar>
-            <img src={img} style={{width:"10%",height:"50%"}}></img>
+            <img src={img} style={{width:"15%",height:"auto"}}></img>
         </Topbar>
         <img src={banner} style={{ width: "100%", height: "20%",marginBottom: "16px" }} alt="logo" />
 
