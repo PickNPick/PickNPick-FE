@@ -83,6 +83,7 @@ justify-content:center;
 color:white;
 margin-bottom: 16px; 
 margin-top: 33px;
+flex-shrink: 0;
 `
 
 export default ChatListPage;
