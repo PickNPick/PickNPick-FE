@@ -2,8 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../styles/themes";
 import axiosInstance from "../../api/axiosInstance";
+import initialimg from "../assets/initialimage.jpg"
 
 const ProfilePage = () => {
+
+  const imgg = initialimg
   const [Name, setName] = useState("");
   const [Mbti, setMbti] = useState("");
   const [Schoolid, setSchoolid] = useState("");
@@ -13,7 +16,7 @@ const ProfilePage = () => {
   const [Discription, setDiscription] = useState("");
   const [Profileimage, setProfileimage] = useState("");
   const [Joinworldcup, setJoinworldcup] = useState(false);
-  const [Shortdiscription,setShortdiscription] = useState("");
+  const [Shortdiscription, setShortdiscription] = useState("");
   const [file, setFile] = useState(null);
 
   const fileInputRef = useRef(null);
@@ -78,7 +81,7 @@ const ProfilePage = () => {
       alert("자기소개글은 500자 이하로만 적어주세요.");
       return;
     }
-    if(Shortdiscription.length >30){
+    if (Shortdiscription.length > 30) {
       alert("짧은소개글은 30자 이하로만 적어주세요.");
       return;
     }
@@ -109,32 +112,32 @@ const ProfilePage = () => {
           onChange={handleFileChange}
         />
         <CustomUploadButton onClick={() => fileInputRef.current.click()}>
-          <img style={{width:"100%",height:"100%" ,borderRadius:"8px"}} src={Profileimage}></img>
+          <img style={{ width: "100%", height: "100%", borderRadius: "8px" }} src={Profileimage}></img>
         </CustomUploadButton>
         <ProfileContainer>
-          <Namecontainer value={Name} onChange={(e) => setName(e.target.value)}></Namecontainer>
-          <Shortcontainer value={Shortdiscription} onChange={(e) => setShortdiscription(e.target.value)}></Shortcontainer>
+          <Namecontainer placeholder="이름 입력" value={Name} onChange={(e) => setName(e.target.value)}></Namecontainer>
+          <Shortcontainer placeholder="한줄소개 입력" value={Shortdiscription} onChange={(e) => setShortdiscription(e.target.value)}></Shortcontainer>
         </ProfileContainer>
       </ProfileBox>
 
       <Textarea_small style={{ top: "32%" }}>
         <Textarea_small_cate>학과</Textarea_small_cate>
-        <Textarea_small_text value={Major} onChange={(e) => setMajor(e.target.value)} />
+        <Textarea_small_text placeholder="학과 입력" value={Major} onChange={(e) => setMajor(e.target.value)} />
       </Textarea_small>
 
       <Textarea_small style={{ top: "39%" }}>
         <Textarea_small_cate>학번</Textarea_small_cate>
-        <Textarea_small_text value={Schoolid} onChange={(e) => setSchoolid(e.target.value)} />
+        <Textarea_small_text placeholder="학번 입력" value={Schoolid} onChange={(e) => setSchoolid(e.target.value)} />
       </Textarea_small>
 
       <Textarea_small style={{ top: "46%" }}>
         <Textarea_small_cate>MBTI</Textarea_small_cate>
-        <Textarea_small_text value={Mbti} onChange={(e) => setMbti(e.target.value)} />
+        <Textarea_small_text placeholder="MBTI 입력" value={Mbti} onChange={(e) => setMbti(e.target.value)} />
       </Textarea_small>
 
       <Textarea_small style={{ top: "53%" }}>
         <Textarea_small_cate>지역</Textarea_small_cate>
-        <Textarea_small_text value={Region} onChange={(e) => setRegion(e.target.value)} />
+        <Textarea_small_text placeholder="지역 입력" value={Region} onChange={(e) => setRegion(e.target.value)} />
       </Textarea_small>
 
       <Textarea_small style={{ top: "60%" }}>
@@ -151,6 +154,7 @@ const ProfilePage = () => {
           <span style={{ marginLeft: "4%" }}>자기 소개</span>
         </Textarea_Large_title>
         <Textarea_Large_text
+          placeholder="자기소개 입력"
           value={Discription}
           onChange={(e) => setDiscription(e.target.value)}
         />
@@ -173,6 +177,7 @@ const CustomUploadButton = styled.button`
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  background:none;
 `;
 
 const ProfileContainer = styled.div`
@@ -204,6 +209,11 @@ border:none;
     border: none;
     outline: none;
   }
+    &::placeholder {
+    color: ${theme.Sub1};
+    font-style: italic;
+    opacity: 0.2;
+  }
 `
 
 const Shortcontainer = styled.textarea`
@@ -228,6 +238,11 @@ border:none;
   &:focus {
     border: none;
     outline: none;
+  }
+     &::placeholder {
+    color: ${theme.Sub1};
+    font-style: italic;
+    opacity: 0.2;
   }
 `
 
@@ -329,6 +344,11 @@ const Textarea_Large_text = styled.textarea`
     border: none;
     outline: none;
   }
+    &::placeholder {
+    color: ${theme.Sub1};
+    font-style: italic;
+    opacity: 0.2;
+  }
 `;
 
 const Textarea_small = styled.div`
@@ -407,6 +427,11 @@ border: none;
   border: none; /* 원하는 색상으로 바꿔줘요 */
   outline: none;
 }
+  &::placeholder {
+    color: ${theme.Sub1};
+    font-style: italic;
+    opacity: 0.2;
+  }
 `
 
 const TopBar = styled.div`
