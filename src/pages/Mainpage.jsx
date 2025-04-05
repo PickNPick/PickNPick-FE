@@ -4,6 +4,7 @@ import { theme } from "../styles/themes";
 import '../styles/fonts.css'
 import Pickpage from "./Pickpage";
 import ChatListPage from "./ChatListPage";
+import ProfilePage from "./ProfilePage";
 
 
 const Mainpage = ()=>{
@@ -28,7 +29,7 @@ const Mainpage = ()=>{
         <Container2>
             {categorybtn[0] === 1 && <Pickpage></Pickpage>} 
             {categorybtn[1] === 1 && <ChatListPage></ChatListPage>}
-            {categorybtn[2] === 1 && <Container style={{backgroundColor:"pink"}}></Container>}
+            {categorybtn[2] === 1 && <ProfilePage></ProfilePage>}
         </Container2>
         <Block></Block>
         <Navbar>
