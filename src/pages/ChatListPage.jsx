@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom"
 import ToggleBar from '../components/ToggleBar';
 import TestImage from '../assets/testimage.png';
 import UserListItem from '../components/UserListItem';
@@ -8,9 +9,11 @@ import styled from "styled-components"
 import { theme } from "../styles/themes"
 import '../styles/fonts.css'
 import EmailSearchBar from '../components/EmailSearchBar';
+import MessageListItem from '../components/MessageListItem';
 
 const ChatListPage = () => {
     const [toggleIdx, setToggleIdx] = useState(0);
+    const navigate = useNavigate();
 
     const onclick = (idx) => {
         console.log(`${idx} clicked`);
@@ -53,16 +56,16 @@ const ChatListPage = () => {
         )}
 
         {toggleIdx === 1 && (
-            <div className="chat-list-container">
-                {/* 메세지 탭 내용 예시 */}
-                <div>메세지 기능은 여기에 추가할 수 있어요.</div>
-            </div>
+            <MessageListBox>
+                <MessageListItem name="사용자 이름" profile={TestImage} explain="안녕! 나는 이동현이라고 해." onClick={() => navigate('/message')} />
+                <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
+            </MessageListBox>
         )}
 
         {toggleIdx === 2 && (
             <div>
                 <div style={{ marginBottom: '16px' }}>
-                  <EmailSearchBar/>
+                    <EmailSearchBar/>
                 </div>
                 <div className="chat-list-container">
                     <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
@@ -87,8 +90,12 @@ const ChatListPage = () => {
     </>
 }
 
-export default ChatListPage;
-
+const MessageListBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 10px 30px;
+`;
 
 const Bannerbar = styled.div`
 font-family: 'Dela Gothic One', sans-serif;
@@ -102,3 +109,5 @@ justify-content:center;
 color:white;
 margin-bottom: 16px; 
 `
+
+export default ChatListPage;
