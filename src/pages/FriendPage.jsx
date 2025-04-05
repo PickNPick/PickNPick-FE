@@ -5,9 +5,33 @@ import TestImage from '../assets/testimage.png';
 
 const FriendPage = () => {
     return <>
-        <div>
-            <div style={{ marginBottom: '16px' }}>
-                <EmailSearchBar/>
+        <div style={{ marginBottom: '16px' }}>
+            <EmailSearchBar/>
+        </div>
+        <div style={{flexGrow: 1, overflowY: 'scroll'}}>
+            <div className="chat-list-container">
+                <UserListItem name="사용자 이름" profile={TestImage} />
+            </div>
+            <div className="chat-list-container">
+                <UserListItem name="사용자 이름" profile={TestImage} />
+            </div>
+            <div className="chat-list-container">
+                <UserListItem name="사용자 이름" profile={TestImage} />
+            </div>
+            <div className="chat-list-container">
+                <UserListItem name="사용자 이름" profile={TestImage} />
+            </div>
+            <div className="chat-list-container">
+                <UserListItem name="사용자 이름" profile={TestImage} />
+            </div>
+            <div className="chat-list-container">
+                <UserListItem name="사용자 이름" profile={TestImage} />
+            </div>
+            <div className="chat-list-container">
+                <UserListItem name="사용자 이름" profile={TestImage} />
+            </div>
+            <div className="chat-list-container">
+                <UserListItem name="사용자 이름" profile={TestImage} />
             </div>
             <div className="chat-list-container">
                 <UserListItem name="사용자 이름" profile={TestImage} />

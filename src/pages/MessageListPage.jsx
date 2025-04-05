@@ -10,6 +10,7 @@ const MessageListPage = () => {
     const [chatRooms, setChatRooms] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
         // 로컬 스토리지에서 토큰 가져오기
         const token = localStorage.getItem("token");
@@ -74,11 +75,15 @@ const MessageListPage = () => {
     );
 };
 
+
 const MessageListBox = styled.div`
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 10px 30px;
+    flex-grow: 1;
+
+    overflow-y: scroll;
 `;
 
 const LoadingMessage = styled.div`
