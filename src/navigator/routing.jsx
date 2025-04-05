@@ -36,7 +36,7 @@ const routes = [
         element: <Randomfriendpage />
     },
     {
-        path: "/message/:roomId",
+        path: "/message/:roomId/:other",
         element: <MessagePage />
     },
 

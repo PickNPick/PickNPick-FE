@@ -91,7 +91,7 @@ const MessagePage = () => {
             Chatting
         </Topbar>
 
-        <MessageTitleBox profile={TestImage} title="이동현" subtitle="활동 중" />
+        <MessageTitleBox profile={TestImage} title={params.other} subtitle="활동 중" />
 
         <MessageBox>
             <div style={{ height: '25px' }} />

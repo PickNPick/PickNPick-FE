@@ -66,8 +66,10 @@ const MessageListPage = () => {
             friendEmail
         });
 
-        navigate(`/message/${roomId}`);
+        navigate(`/message/${roomId}/${friendEmail}`);
     }
+
+    console.log(chatRooms);
 
     return (
         <MessageListBox>
