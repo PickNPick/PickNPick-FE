@@ -29,10 +29,15 @@ const ToggleDiv = styled.div`
 const ToggleItem = styled.button`
     flex: 1 1 0;
     color: ${(props) => props.selected ? '#FFFFFF' : '#FF6B6B'};
-    background-color: ${(props) => props.selected ? '#FF6B6B' : 'transparent'};
+    background-color: ${(props) => props.selected ? '#FF5A6D' : 'transparent'};
     
     height: 42px;
     border-radius: calc(42px / 2);
+
+    font-family: 'Pretendard-Regular';
+    font-size: 16px;
+
+
 `;
 
 export default ToggleBar;

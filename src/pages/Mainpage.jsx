@@ -48,6 +48,8 @@ height:100%;
 position:relative;
 `
 const Container2 = styled.div`
+display: flex;
+flex-direction: column;
 width:100%;
 height:90%;
 position:relative;

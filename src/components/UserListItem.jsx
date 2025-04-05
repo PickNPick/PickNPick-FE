@@ -9,11 +9,12 @@ const UserListItem = ({name, profile}) => {
 }
 
 const ItemDiv = styled.div`
+    width: 100%; 
     display: flex;
     flex-direction: row;
     align-items: center;
     color: black;
-    gap: 20px;
+    gap: 25px;
 `;
 
 const ProfileImage = styled.img`
@@ -23,6 +24,7 @@ const ProfileImage = styled.img`
 
 const UserName = styled.div`
     font-size: 1.5rem;
+    font-family: 'HakgyoansimChilpanjiugaeTTF-B'; 
 `;
 
 export default UserListItem;

@@ -438,7 +438,7 @@ border: none;
 const TopBar = styled.div`
   width: 100%;
   height: 52px;
-  background-color: #FF6B6B;
+  background-color: #FF5A6D;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -452,7 +452,7 @@ const Title = styled.div`
   font-weight: bold;
   font-family:Dela Gothic One;
   font-weight: 400;
-  font-size: 12.4px;
+  font-size: 15px;
 `;
 
 
@@ -469,7 +469,7 @@ const TextArea = styled.textarea`
   font-size: 14px; /* 글자 크기 조정 */
   font-family: 'Pretendard', sans-serif;
   background-color: #fff;
-  color: #FF6B6B;
+  color: #FF5A6D;
   padding: 8px;
   border: none;
   border-radius: 8px;
