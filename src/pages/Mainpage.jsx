@@ -79,6 +79,7 @@ position:absolute;
 border-radius:20px 20px 0 0 ;
 display:flex;
 align-items:center;
+box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.3); 
 `
 
 const Btn = styled.button`
