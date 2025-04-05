@@ -44,7 +44,7 @@ const Mainpage = ()=>{
         <Block></Block>
         <Navbar>
             <Btn style={{marginLeft:"10%"}} onClick={()=>{btnclick(0)}} clicked={categorybtn[0]}>Pick!</Btn>
-            <Btn style={{marginLeft:"10%"}} onClick={()=>{btnclick(1)}} clicked={categorybtn[1]}>Chating</Btn>
+            <Btn style={{marginLeft:"10%"}} onClick={()=>{btnclick(1)}} clicked={categorybtn[1]}>Chatting</Btn>
             <Btn style={{marginLeft:"10%"}} onClick={()=>{btnclick(2)}} clicked={categorybtn[2]}>Profile</Btn>
         </Navbar>
     </Container>
