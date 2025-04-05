@@ -1,26 +1,80 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MessageListItem from '../components/MessageListItem';
 import styled from 'styled-components';
 import TestImage from '../assets/testimage.png';
 import { useNavigate } from 'react-router-dom';
+import socket from '../components/socket';
 
 const MessageListPage = () => {
     const navigate = useNavigate();
+    const [chatRooms, setChatRooms] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    return <MessageListBox>
-        <MessageListItem name="사용자 이름" profile={TestImage} explain="안녕! 나는 이동현이라고 해." onClick={() => navigate('/message')} />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-        <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-    </MessageListBox>
-}
+
+    useEffect(() => {
+        // 로컬 스토리지에서 토큰 가져오기
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            try {
+                // JWT 토큰에서 이메일 추출
+                const payload = token.split('.')[1];
+                const decodedPayload = JSON.parse(atob(payload));
+                const userEmail = decodedPayload.email;
+
+                // 채팅방 목록 요청
+                socket.emit('get_chat_rooms', { userEmail });
+
+                // 채팅방 목록 수신
+                socket.on('chat_rooms_list', (rooms) => {
+                    setChatRooms(rooms);
+                    setLoading(false);
+                });
+
+                // 오류 처리
+                socket.on('error', (err) => {
+                    console.error('채팅방 목록 오류:', err);
+                    setLoading(false);
+                });
+            } catch (error) {
+                console.error('토큰 파싱 오류:', error);
+                setLoading(false);
+            }
+        } else {
+            // 토큰이 없을 경우 로그인 페이지로 리다이렉트
+            navigate('/login');
+        }
+
+        return () => {
+            // 컴포넌트 언마운트 시 이벤트 리스너 제거
+            socket.off('chat_rooms_list');
+            socket.off('error');
+        };
+    }, [navigate]);
+
+    if (loading) {
+        return <LoadingMessage>채팅방 목록을 불러오는 중...</LoadingMessage>;
+    }
+
+    return (
+        <MessageListBox>
+            {chatRooms.length > 0 ? (
+                chatRooms.map((room, index) => (
+                    <MessageListItem
+                        key={room.roomId || index}
+                        name={room.otherParticipant || "사용자"}
+                        profile={TestImage}
+                        explain={room.lastMessage ? room.lastMessage.content : "새 대화를 시작하세요"}
+                        onClick={() => navigate(`/message/${room.roomId}`)}
+                    />
+                ))
+            ) : (
+                <EmptyMessage>대화 목록이 없습니다. 새로운 대화를 시작해보세요!</EmptyMessage>
+            )}
+        </MessageListBox>
+    );
+};
+
 
 const MessageListBox = styled.div`
     display: flex;
@@ -30,6 +84,18 @@ const MessageListBox = styled.div`
     flex-grow: 1;
 
     overflow-y: scroll;
+`;
+
+const LoadingMessage = styled.div`
+    padding: 20px;
+    text-align: center;
+    color: #666;
+`;
+
+const EmptyMessage = styled.div`
+    padding: 20px;
+    text-align: center;
+    color: #999;
 `;
 
 export default MessageListPage;
