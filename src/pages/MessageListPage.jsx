@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import MessageListItem from '../components/MessageListItem';
 import styled from 'styled-components';
 import TestImage from '../assets/testimage.png';
-import { useNavigate } from 'react-router-dom';
 import socket from '../components/socket';
+import { useNavigate } from 'react-router-dom';
 
 const MessageListPage = () => {
     const navigate = useNavigate();
     const [chatRooms, setChatRooms] = useState([]);
     const [loading, setLoading] = useState(true);
-
 
     useEffect(() => {
         // 로컬 스토리지에서 토큰 가져오기
@@ -56,6 +55,19 @@ const MessageListPage = () => {
         return <LoadingMessage>채팅방 목록을 불러오는 중...</LoadingMessage>;
     }
 
+    const onRoomClicked = (roomId, friendEmail) => {
+        const token = localStorage.getItem("token");
+        const payload = token.split('.')[1];
+        const decodedPayload = JSON.parse(atob(payload));
+        const userEmail = decodedPayload.email;
+        socket.emit('create_or_join_chat', {
+            userEmail,
+            friendEmail
+        });
+
+        navigate(`/message/${roomId}`);
+    }
+
     return (
         <MessageListBox>
             {chatRooms.length > 0 ? (
@@ -65,7 +77,7 @@ const MessageListPage = () => {
                         name={room.otherParticipant || "사용자"}
                         profile={TestImage}
                         explain={room.lastMessage ? room.lastMessage.content : "새 대화를 시작하세요"}
-                        onClick={() => navigate(`/message/${room.roomId}`)}
+                        onClick={() => onRoomClicked(room.roomId, room.otherParticipant)}
                     />
                 ))
             ) : (

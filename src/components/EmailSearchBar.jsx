@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { Search } from 'lucide-react';
 import axios from 'axios';

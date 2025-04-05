@@ -3,6 +3,7 @@ import EmailSearchBar from '../components/EmailSearchBar';
 import UserListItem from '../components/UserListItem';
 import React, { useEffect, useState } from 'react';
 import TestImage from '../assets/testimage.png';
+import axiosInstance from '../../api/axiosInstance';
 import styled from 'styled-components';
 
 const FriendPage = () => {
