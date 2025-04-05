@@ -5,6 +5,7 @@ import UserListItem from '../components/UserListItem';
 import TestImage from '../assets/testimage.png';
 import axiosInstance from '../../api/axiosInstance';
 import styled from 'styled-components';
+import socket from '../components/socket';
 
 const FriendPage = () => {
     const [friends, setFriends] = useState([]);
@@ -21,8 +22,8 @@ const FriendPage = () => {
                 });
                 console.log('결과', result)
                 console.log("받은 전체 응답:", result.data);
-                console.log("받은 친구 목록:", result.data.friends);
-                setFriends(result.data.friends || []);
+                console.log("받은 친구 목록:", result.data[0].friends);
+                setFriends(result.data[0].friends || []);
 
 
                 setNoResult(false); // 초기 상태에서는 false
@@ -44,6 +45,17 @@ const FriendPage = () => {
         }
     };
 
+    const makeRoom = (friendEmail) => {
+        const token = localStorage.getItem("token");
+        const payload = token.split('.')[1];
+        const decodedPayload = JSON.parse(atob(payload));
+        const userEmail = decodedPayload.email;
+        socket.emit('create_or_join_chat', {
+            userEmail,
+            friendEmail
+        });
+    }
+
     return (
         <>
             <div style={{ marginBottom: '16px' }}>
@@ -54,7 +66,7 @@ const FriendPage = () => {
                     <NoResultMessage>검색 결과가 없습니다.</NoResultMessage>
                 ) : (
                     friends.map((friend) => (
-                        <div className="chat-list-container" key={friend.email}>
+                        <div className="chat-list-container" key={friend.email} onClick={() => makeRoom(friend.email)}>
                             <UserListItem name={friend.name} profile={friend.profileImage || TestImage} />
                         </div>
                     ))
