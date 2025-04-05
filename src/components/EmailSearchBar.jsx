@@ -1,15 +1,27 @@
 import styled from 'styled-components';
-import { Search } from 'lucide-react'; 
+import { Search } from 'lucide-react';
 
-const EmailSearchBar = () => {
-    return (
-        <SearchBarWrapper>
-            <StyledInput placeholder="이메일로 친구 검색하기" />
-            <SearchButton>
-                <Search color="white" size={24} />
-            </SearchButton>
-        </SearchBarWrapper>
-    );
+const EmailSearchBar = ({ onSearch }) => {
+
+  const [text, setText] = useState('');
+
+  const onChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const onClick = () => {
+    onSearch(text);
+    setText('');
+  }
+
+  return (
+    <SearchBarWrapper>
+      <StyledInput placeholder="이메일로 친구 검색하기" onChange={onChange} value={text} />
+      <SearchButton onClick={onClick}>
+        <Search color="white" size={24} />
+      </SearchButton>
+    </SearchBarWrapper>
+  );
 };
 
 export default EmailSearchBar;

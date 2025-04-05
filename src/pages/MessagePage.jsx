@@ -8,6 +8,7 @@ import { IoEllipseSharp } from 'react-icons/io5';
 import { theme } from "../styles/themes";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useNavigate, useParams } from 'react-router-dom';
+import socket from '../components/socket';
 
 const MessagePage = () => {
     const navigate = useNavigate();
