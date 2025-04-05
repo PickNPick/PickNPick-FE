@@ -151,8 +151,8 @@ const Worldcuppage = () => {
         <Overlay>
           {!overlayinfo &&
             <Overlay_container>
-            <div style={{ fontWeight: "700", width: "100%", height: "70%", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid grey" }}>이상형 월드컵을 그만하시겠습니까?</div>
-            <div style={{ width: "100%", height: "30%", display: "flex", flexDirection: "row" }}>
+            <div style={{ color: 'black', fontWeight: "700", width: "100%", height: "70%", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid grey" }}>이상형 월드컵을 그만하시겠습니까?</div>
+            <div style={{ color: 'black', width: "100%", height: "30%", display: "flex", flexDirection: "row" }}>
               <div style={{ width: "50%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { setisoverlay(false) }}>계속하기</div>
               <div style={{ color: `${theme.Sub1}`, width: "50%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", borderLeft: "1px solid grey" }} onClick={(() => {
                 navigator("/mainpage", { replace: true });
