@@ -15,7 +15,8 @@ const FriendRequestPage = ({ onAccept, onDecline }) => {
         axiosInstance.get('/getmailbox')
             .then(response => {
                 console.log('친구 요청 데이터:', response.data);
-                setFriendRequests(response.data || []);
+                setFriendRequests(response.data.mails || []);
+
                 setLoading(false);
             })
             .catch(error => {
