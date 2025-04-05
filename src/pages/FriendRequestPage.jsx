@@ -1,44 +1,100 @@
-import React from 'react';
-import MessageListItem from '../components/MessageListItem';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TestImage from '../assets/testimage.png';
 import EmailSearchBar from '../components/EmailSearchBar';
 import UserRequestItem from '../components/UserRequestItem';
+import axiosInstance from '../../api/axiosInstance';
 
-const FriendRequestPage = ({onAccept, onDecline}) => {
-    return <>
-        <div style={{ marginBottom: '16px' }}>
-            <EmailSearchBar/>
-        </div>
-        <Container>
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-            <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-            onAccept={onAccept} onDecline={onDecline} />
-        </Container>
-    </>
-}
+const FriendRequestPage = ({ onAccept, onDecline }) => {
+    const [friendRequests, setFriendRequests] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        // 데이터 가져오기
+        axiosInstance.get('/getmailbox')
+            .then(response => {
+                console.log('친구 요청 데이터:', response.data);
+                setFriendRequests(response.data || []);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error('친구 요청 조회 오류:', error);
+                setError('친구 요청을 불러오는 중 오류가 발생했습니다.');
+                setLoading(false);
+            });
+    }, []);
+
+    // 요청 수락 핸들러
+    const handleAccept = (email) => {
+        if (onAccept) {
+            onAccept(email);
+            // 옵션: 목록에서 해당 요청 제거 또는 상태 업데이트
+            setFriendRequests(prev => prev.filter(request => request.email !== email));
+        }
+    };
+
+    // 요청 거절 핸들러
+    const handleDecline = (email) => {
+        if (onDecline) {
+            onDecline(email);
+            // 목록에서 해당 요청 제거
+            setFriendRequests(prev => prev.filter(request => request.email !== email));
+        }
+    };
+
+    return (
+        <>
+            <div style={{ marginBottom: '16px' }}>
+                <EmailSearchBar />
+            </div>
+            <Container>
+                {loading ? (
+                    <LoadingMessage>친구 요청을 불러오는 중...</LoadingMessage>
+                ) : error ? (
+                    <ErrorMessage>{error}</ErrorMessage>
+                ) : friendRequests.length === 0 ? (
+                    <EmptyMessage>받은 친구 요청이 없습니다.</EmptyMessage>
+                ) : (
+                    friendRequests.map((request, index) => (
+                        <UserRequestItem
+                            key={`${request.email}-${index}`}
+                            name={request.name}
+                            profile={TestImage} // 실제 프로필 이미지가 있다면 여기에 추가
+                            explain={`${new Date(request.createdAt).toLocaleDateString()} 에 요청했습니다.`}
+                            onAccept={() => handleAccept(request.email)}
+                            onDecline={() => handleDecline(request.email)}
+                            email={request.email} // email 정보 전달 (옵션)
+                        />
+                    ))
+                )}
+            </Container>
+        </>
+    );
+};
 
 const Container = styled.div`
     flex-grow: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 10px 30px;
-`
+`;
+
+const LoadingMessage = styled.div`
+    text-align: center;
+    padding: 20px;
+    color: #666;
+`;
+
+const ErrorMessage = styled.div`
+    text-align: center;
+    padding: 20px;
+    color: #e74c3c;
+`;
+
+const EmptyMessage = styled.div`
+    text-align: center;
+    padding: 20px;
+    color: #666;
+`;
 
 export default FriendRequestPage;
