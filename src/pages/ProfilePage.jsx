@@ -196,7 +196,7 @@ border:none;
   text-overflow: ellipsis;
   word-wrap: break-word;
   font-size: 30px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'HakgyoansimChilpanjiugaeTTF-B', sans-serif;
   letter-spacing: -1px;
   font-weight: 700;
   color: ${theme.Sub1};
@@ -228,7 +228,7 @@ border:none;
   text-overflow: ellipsis;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Pretendard-Regular', sans-serif;
   letter-spacing: -.4px;
   font-weight: 700;
   color: ${theme.Sub1};
@@ -286,7 +286,7 @@ justify-content:center;
 align-items: center;
 background-color:${theme.Sub1};
 font-size: 14px; /* 글자 크기 조정 */
-font-family: 'Pretendard', sans-serif;
+font-family: 'Pretendard-Regular', sans-serif;
 font-weight:700;
 color:white;
 &:hover{
@@ -319,7 +319,7 @@ height: 20%;
 display:flex;
 align-items:center;
 font-size: 18px; /* 글자 크기 조정 */
-font-family: HakgyoansimChilpanjiugaeTTF-B;
+font-family: 'HakgyoansimChilpanjiugaeTTF-B';
 font-weight:400;
 color:${theme.Sub1};
 `
@@ -336,7 +336,7 @@ const Textarea_Large_text = styled.textarea`
   text-overflow: ellipsis;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: 'Pretendard variable';
+  font-family: 'Pretendard-Regular';
   font-weight: 700;
   color: ${theme.Sub1};
   scrollbar-width: none; /* Firefox */
@@ -427,7 +427,7 @@ border: none;
   word-wrap: break-word; /* 단어가 넘칠 때 자동으로 줄바꿈 처리 */
   height:80%;
   font-size: 14px; /* 글자 크기 조정 */
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Pretendard-Regular', sans-serif;
   font-weight:700;
   color:${theme.Sub1};
   background-color: transparent;
@@ -474,7 +474,7 @@ const TextArea = styled.textarea`
   width: 50%;
   height: 100%;
   font-size: 14px; /* 글자 크기 조정 */
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Pretendard-Regular', sans-serif;
   background-color: #fff;
   color: #FF5a6d;
   padding: 8px;
