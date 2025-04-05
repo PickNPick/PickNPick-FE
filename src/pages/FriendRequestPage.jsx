@@ -6,7 +6,7 @@ import EmailSearchBar from '../components/EmailSearchBar';
 import UserRequestItem from '../components/UserRequestItem';
 
 const FriendRequestPage = ({onAccept, onDecline}) => {
-    <div>
+    return <div>
         <div style={{ marginBottom: '16px' }}>
             <EmailSearchBar/>
         </div>
