@@ -40,7 +40,7 @@ const MeDiv = styled.div`
     padding: 8px 13px 8px 13px;
 
     background-color: #FF6B6B;
-    border-radius: 25px;
+    border-radius: 20px;
     text-align: right;
 `;
 
@@ -50,7 +50,7 @@ const OtherDiv = styled.div`
     padding: 8px 13px 8px 13px;
 
     background-color: #FFFFFF;
-    border-radius: 25px;
+    border-radius: 20px;
     text-align: left;
 `
 
