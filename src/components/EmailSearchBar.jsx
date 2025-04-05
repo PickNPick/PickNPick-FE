@@ -33,6 +33,7 @@ const StyledInput = styled.input`
   flex: 1;
   border: none;
   outline: none;
+  background-color: transparent;
 
   font-family: 'Pretendard-Regular'; 
   font-size: 16px;
