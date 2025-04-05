@@ -28,8 +28,9 @@ const ChatListPage = () => {
     }
 
     return <>
-
-        <Bannerbar>Chating</Bannerbar>
+    
+      <Bannerbar>Chatting</Bannerbar>
+    
 
         <div style={{ marginBottom: '16px' }}>
             <ToggleBar
@@ -79,10 +80,6 @@ const ChatListPage = () => {
                     <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
                     onAccept={onAccept} onDecline={onDecline} />
                 </div>
-                <div className="chat-list-container">
-                    <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-                    onAccept={onAccept} onDecline={onDecline} />
-                </div>
             </div>
         )}
 
@@ -101,13 +98,14 @@ const Bannerbar = styled.div`
 font-family: 'Dela Gothic One', sans-serif;
 font-size: 15px;
 width:100%;
-height:9%;
+height:52px;
 background-color:${theme.Sub1};
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
 margin-bottom: 16px; 
+margin-top: 30px;
 `
 
 export default ChatListPage;
