@@ -15,6 +15,7 @@ import MessageListItem from '../components/MessageListItem';
 import FriendPage from './FriendPage';
 import MessageListPage from './MessageListPage';
 import FriendRequestPage from './FriendRequestPage';
+import socket from '../components/socket';
 
 const ChatListPage = () => {
     //const [toggleIdx, setToggleIdx] = useState(0);
@@ -37,11 +38,25 @@ const ChatListPage = () => {
         setSearchParams(searchParams);
     }
 
-    const onAccept = () => {
+    const onAccept = (receiver, sender) => {
         console.log('친구 요청 수락!');
+        console.log(sender);
+        console.log(receiver);
+        socket.emit('acceptFriend', {
+            receiveremail: receiver.email,
+            senderemail: sender.email,
+            sender: sender.name,
+            receiver: receiver.name,
+        });
     }
-    const onDecline = () => {
+    const onDecline = (receiver, sender) => {
         console.log('친구 요청 거절!');
+        socket.emit('rejectFriend', {
+            receiveremail: receiver.email,
+            senderemail: sender.email,
+            sender: sender.name,
+            receiver: receiver.name,
+        });
     }
 
     return <>
