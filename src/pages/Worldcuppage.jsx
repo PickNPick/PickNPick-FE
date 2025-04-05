@@ -41,8 +41,9 @@ const Worldcuppage = () => {
     controllerRef.current = controller;
 
     try {
-      const result = await axiosInstance.get("/getworldcup", {
+      const result = await axiosInstance.post("/getworldcup", {
         signal: controller.signal,
+        size:32
       });
       setworldcupdata(result.data);
       setcurrentinfo([result.data[0], result.data[1]]);
