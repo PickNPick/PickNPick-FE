@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import TestImage from '../assets/testimage.png';
 import MessageTitleBox from '../components/MessageTitleBox';
 import ChatBubble from '../components/ChatBubble';
+import ChatBar from '../components/ChatBar';
 
 const MessagePage = () => {
+    const onChat = () => {console.log("테스트!!")};
+
     return <>
         <MessageTitleBox profile={TestImage} title="이동현" subtitle="활동 중" />
 
@@ -22,9 +25,9 @@ const MessagePage = () => {
             <ChatBubble isMe={false} profileImage={TestImage} message="끝없이 달리면" />
             <ChatBubble isMe={false} profileImage={TestImage} message="모두가 잠들 때" />
             <ChatBubble isMe={false} profileImage={TestImage} message="우리만 남을 때" isLast />
-
-
         </MessageBox>
+
+        <ChatBar onChat={onChat} />
     </>
 }
 
