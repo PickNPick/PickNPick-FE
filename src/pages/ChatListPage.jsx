@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import ToggleBar from '../components/ToggleBar';
 import TestImage from '../assets/testimage.png';
@@ -31,16 +31,16 @@ const ChatListPage = () => {
     }
 
     return <>
-    
+
         <Bannerbar>Chatting</Bannerbar>
-    
+
 
         <div style={{ marginBottom: '16px' }}>
             <ToggleBar
                 list={['친구', '메세지', '요청']}
                 selectedIdx={toggleIdx}
                 onclick={onclick}
-        />
+            />
         </div>
 
         {toggleIdx === 0 && (
