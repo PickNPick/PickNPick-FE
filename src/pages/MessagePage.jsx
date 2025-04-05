@@ -46,6 +46,7 @@ const MessagePage = () => {
             "content": message,
         })
 
+        console.log(sampleMessage);
         setSampleMessage([...sampleMessage, {
             isMe: true,
             message
@@ -53,13 +54,12 @@ const MessagePage = () => {
     };
 
     useEffect(() => {
-
         socket.on('new_message', ({roomId, message}) => {
             //alert(message);
-            console.log(message);
+            console.log(message.content);
             setSampleMessage([...sampleMessage, {
                 isMe: false,
-                message: message.content,
+                message: message.content
             }]);
         });
 
@@ -73,11 +73,12 @@ const MessagePage = () => {
         lastRef.current.scrollIntoView();
     }, [sampleMessage]);
 
-    for (let i = 0; i < sampleMessage.length; i++) {
-        if (i == sampleMessage.length - 1 || sampleMessage[i].isMe != sampleMessage[i + 1].isMe)
-            sampleMessage[i].isLast = true;
+    let message = [...sampleMessage];
+    for (let i = 0; i < message.length; i++) {
+        if (i == message.length - 1 || message[i].isMe != message[i + 1].isMe)
+            message[i].isLast = true;
         else
-            sampleMessage[i].isLast = false;
+        message[i].isLast = false;
     }
     const clickback = () => {
         navigate(-1);
@@ -96,7 +97,7 @@ const MessagePage = () => {
         <MessageBox>
             <div style={{ height: '25px' }} />
 
-            {sampleMessage.map(({ isMe, message, isLast }, idx) => <ChatBubble key={idx} isMe={isMe} profileImage={TestImage} message={message} isLast={isLast} />)}
+            {message.map(({ isMe, message, isLast }, idx) => <ChatBubble key={idx} isMe={isMe} profileImage={TestImage} message={message} isLast={isLast} />)}
 
             <div ref={lastRef} />
 

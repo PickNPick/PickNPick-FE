@@ -40,6 +40,7 @@ const InnerContainer = styled.div`
 
 const TitleBox = styled.div`
     font-size: 1.5rem;
+    font-family: 'HakgyoansimChilpanjiugaeTTF-B';
 `;
 
 const SubtitleBox = styled.div`
