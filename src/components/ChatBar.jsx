@@ -9,12 +9,23 @@ const ChatBar = ({onChat}) => {
         setText(e.target.value);
     }
 
+    const onSendButtonClicked = () => {
+        onChat(text);
+        setText('');
+    }
+
+    const onKeyPressed = (e) => {
+        if(e.key === "Enter") {
+            onSendButtonClicked();
+        }
+    }
+
     return <Container>
         <ImageButton src={PlusButton} />
 
-        <InputBox type="text" onChange={onChange} value={text} />
+        <InputBox type="text" onChange={onChange} value={text} onKeyDown={onKeyPressed} />
 
-        <ImageButton src={SendButton} />
+        <ImageButton src={SendButton} onClick={onSendButtonClicked} />
     </Container>
 }
 
