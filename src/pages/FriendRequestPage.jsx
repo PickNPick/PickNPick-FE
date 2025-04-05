@@ -27,22 +27,24 @@ const FriendRequestPage = ({ onAccept, onDecline }) => {
     }, []);
 
     // 요청 수락 핸들러
-    const handleAccept = (email) => {
+    const handleAccept = (receiver, sender) => {
         if (onAccept) {
-            onAccept(email);
+            onAccept(receiver, sender);
             // 옵션: 목록에서 해당 요청 제거 또는 상태 업데이트
-            setFriendRequests(prev => prev.filter(request => request.email !== email));
+            setFriendRequests(prev => prev.filter(request => request.sender.email !== sender.email));
         }
     };
 
     // 요청 거절 핸들러
-    const handleDecline = (email) => {
+    const handleDecline = (receiver, sender) => {
         if (onDecline) {
-            onDecline(email);
+            onDecline(receiver, sender);
             // 목록에서 해당 요청 제거
-            setFriendRequests(prev => prev.filter(request => request.email !== email));
+            setFriendRequests(prev => prev.filter(request => request.sender.email !== sender.email));
         }
     };
+
+    console.log(friendRequests);
 
     return (
         <>
@@ -59,13 +61,13 @@ const FriendRequestPage = ({ onAccept, onDecline }) => {
                 ) : (
                     friendRequests.map((request, index) => (
                         <UserRequestItem
-                            key={`${request.email}-${index}`}
-                            name={request.name}
+                            key={`${request.sender.email}-${index}`}
+                            name={request.sender.name}
                             profile={TestImage} // 실제 프로필 이미지가 있다면 여기에 추가
-                            explain={`${new Date(request.createdAt).toLocaleDateString()} 에 요청했습니다.`}
-                            onAccept={() => handleAccept(request.email)}
-                            onDecline={() => handleDecline(request.email)}
-                            email={request.email} // email 정보 전달 (옵션)
+                            explain={`${request.sender.email} 님이 요청했습니다.`}
+                            onAccept={() => handleAccept(request.receiver, request.sender)}
+                            onDecline={() => handleDecline(request.receiver, request.sender)}
+                            email={request.sender.email} // email 정보 전달 (옵션)
                         />
                     ))
                 )}
