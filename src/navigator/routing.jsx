@@ -4,7 +4,7 @@ import Mainpage from "../pages/Mainpage"
 import ProfilePage from "../pages/ProfilePage";
 import Worldcuppage from "../pages/Worldcuppage"
 import Randomfriendpage from "../pages/Randomfriendpage"
-
+import MessagePage from "../pages/MessagePage";
 
 
 const routes = [
@@ -34,6 +34,10 @@ const routes = [
     {
         path:"/randomfriend",
         element : <Randomfriendpage/>
+    },
+    {
+        path: "/message",
+        element: <MessagePage />
     }
 ]
 
