@@ -292,7 +292,7 @@ const Overlay_container2 = styled.div`
 
 const Overlay_img = styled.img`
 width:30%;
-height:18%;
+aspect-ratio: 1;
 top:7%;
 left:60%;
 position:absolute;
@@ -364,7 +364,6 @@ color:white;
 
 const Smallcontainer_img = styled.img`
 width:80%;
-height:60%;
 position: absolute;
 margin-top:10%;
 `
@@ -377,7 +376,7 @@ margin-top:95%;
 font-family: HakgyoansimChilpanjiugaeTTF-B;
   font-weight: 600;
   font-size: 35px;
-color:${theme.Sub1}
+color:${theme.Sub1};
 `
 
 const Container = styled.div`

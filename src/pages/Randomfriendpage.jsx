@@ -57,6 +57,8 @@ const Randomfriendpage = () => {
         })
         console.log(datas)
         alert("친구요청완료")
+
+        navigator("/mainpage", { replace: true });
     }
     catch(err){
         console.error(err)
