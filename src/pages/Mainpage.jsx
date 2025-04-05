@@ -5,25 +5,35 @@ import '../styles/fonts.css'
 import Pickpage from "./Pickpage";
 import ChatListPage from "./ChatListPage";
 import ProfilePage from "./ProfilePage";
-
+import { useSearchParams } from "react-router-dom";
 
 const Mainpage = ()=>{
 
-    const [categorybtn,setcategorybtn] = useState([1,0,0]);
-    const [token,settoken] = useState("")
+    // const [categorybtn,setcategorybtn] = useState([1,0,0]);
+    const [token,settoken] = useState("");
+    let [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(()=>{
+        if(searchParams.get('page') === null) {
+            searchParams.append('page', 0);
+            setSearchParams(searchParams);
+        }
+
         const query = new URLSearchParams(window.location.search);
         const token = query.get('token');
         settoken(token)
     },[])
 
+    let page = searchParams.get('page') !== null ? parseInt(searchParams.get('page')) : 0;
 
+    let categorybtn = [page==0 ? 1 : 0, page==1 ? 1 : 0, page==2 ? 1 : 0];
 
     const btnclick = (i)=>{
-        if(i == 0)setcategorybtn([1,0,0])
-        else if(i == 1)setcategorybtn([0,1,0])
-        else setcategorybtn([0,0,1])
+        // if(i == 0)setcategorybtn([1,0,0])
+        // else if(i == 1)setcategorybtn([0,1,0])
+        // else setcategorybtn([0,0,1])
+        searchParams.set('page', i);
+        setSearchParams(searchParams);
     }
     return <Container>
         <Container2>

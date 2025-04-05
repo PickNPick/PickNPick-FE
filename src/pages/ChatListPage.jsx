@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { useNavigate } from "react-router-dom"
+import React, {useState, useEffect} from 'react';
+import { useNavigate, useSearchParams } from "react-router-dom"
 import ToggleBar from '../components/ToggleBar';
 import TestImage from '../assets/testimage.png';
 import UserListItem from '../components/UserListItem';
@@ -15,12 +15,24 @@ import MessageListPage from './MessageListPage';
 import FriendRequestPage from './FriendRequestPage';
 
 const ChatListPage = () => {
-    const [toggleIdx, setToggleIdx] = useState(0);
+    //const [toggleIdx, setToggleIdx] = useState(0);
     const navigate = useNavigate();
+    let [searchParams, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        if (searchParams.get('toggle') === null) {
+            searchParams.append('toggle', 0);
+            setSearchParams(searchParams);
+        }
+    }, [])
+
+    const toggleIdx = parseInt(searchParams.get('toggle'));
 
     const onclick = (idx) => {
         console.log(`${idx} clicked`);
-        setToggleIdx(idx);
+        //setToggleIdx(idx);
+        searchParams.set('toggle', idx);
+        setSearchParams(searchParams);
     }
 
     const onAccept = () => {
