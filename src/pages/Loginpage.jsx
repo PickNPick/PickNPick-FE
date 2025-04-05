@@ -6,6 +6,7 @@ import { theme } from "../styles/themes"
 import '../styles/fonts.css'
 import img1 from '../assets/loginpageimg/logoimg.png'
 import img2 from '../assets/loginpageimg/mainimg.png'
+import img3 from '../assets/loginpageimg/mainimg2.png'
 
 
 const Loginpage = () => {
@@ -13,13 +14,15 @@ const Loginpage = () => {
 
     const logoimg = img1
     const mainimg = img2
+    const mainimg2 = img3
 
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const token = params.get('token')
         if (token != null) {
-            navigator(`/mainpage?token=${token}`, { replace: true })
+            localStorage.setItem("token",token);
+            navigator(`/mainpage`, { replace: true })
         }
     }, [])
 
@@ -30,8 +33,9 @@ const Loginpage = () => {
     return <Container>
         <Logosmall>마음에 드는 친구 찾기</Logosmall>
         <Logo>
-            <img src={logoimg} style={{width:"100%",height:"100%"}}></img>
+            <img src={logoimg} ></img>
         </Logo>
+        <img src={img3}  style={{position:"absolute",top:"55%",left:"41.5%",zIndex:"5"}}></img>
         <Imgcontainer>
             <img src={mainimg} style={{width:"100%",height:"100%"}}></img>
         </Imgcontainer>
@@ -72,6 +76,7 @@ position:absolute;
 width:100%;
 height:40%;
 top:42%;
+z-index:1;
 `
 
 const Loginbtn = styled.button`
