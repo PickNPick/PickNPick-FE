@@ -163,31 +163,34 @@ const Worldcuppage = () => {
             <Overlay_container2>
               <Overlay_img src={curoverlayinfo.profileImage}></Overlay_img>
               <Overlay_title>
-                <text>{curoverlayinfo.name}</text><br></br>
-                <text>{curoverlayinfo.shortdiscription}</text>
+                <div style={{width:"100%",height:"55%",display:"flex",alignItems:"center",
+                  fontFamily:"HakgyoansimChilpanjiugaeTTF-B",
+                  fontSize:"28px",
+                  fontWeight:"600"}}>{curoverlayinfo.name}</div>
+                <div style={{width:"100%",height:"45%",textAlign:"left"}}>{curoverlayinfo.shortdiscription}</div>
               </Overlay_title>
               <Overlay_text style={{top:"27%"}}>
-                <text style={{marginLeft:"3%"}}>학과</text>
-                <text style={{marginLeft:"10%"}}>{curoverlayinfo.major}</text>
+                <div style={{width:"25%",height:"100%",display:"flex",alignItems:"center"}}>학과</div>
+                <div style={{width:"75%",height:"100%",display:"flex",alignItems:"center"}}>{curoverlayinfo.major}</div>
                 </Overlay_text>
               <Overlay_text style={{top:"35%"}}>
-                <text style={{marginLeft:"3%"}}>학번</text>
-                <text style={{marginLeft:"10%"}}>{curoverlayinfo.schoolid}</text>
+              <div style={{width:"25%",height:"100%",display:"flex",alignItems:"center"}}>학번</div>
+              <div style={{width:"75%",height:"100%",display:"flex",alignItems:"center"}}>{curoverlayinfo.schoolid}</div>
               </Overlay_text>
               <Overlay_text style={{top:"43%"}}>
-                <text style={{marginLeft:"3%"}}>MBTI</text>
-                <text style={{marginLeft:"10%"}}>{curoverlayinfo.mbti}</text>
+              <div style={{width:"25%",height:"100%",display:"flex",alignItems:"center"}}>MBTI</div>
+              <div style={{width:"75%",height:"100%",display:"flex",alignItems:"center"}}>{curoverlayinfo.mbti}</div>
                 </Overlay_text>
               <Overlay_text style={{top:"51%"}}>
-                <text style={{marginLeft:"3%"}}>지역</text>
-                <text style={{marginLeft:"10%"}}>{curoverlayinfo.region}</text>
+              <div style={{width:"25%",height:"100%",display:"flex",alignItems:"center"}}>지역</div>
+              <div style={{width:"75%",height:"100%",display:"flex",alignItems:"center"}}>{curoverlayinfo.region}</div>
                 </Overlay_text>
               <Overlay_text_large>
-                <div style={{width:"100%",height:"20%",textAlign:"left"}}><text style={{marginLeft:"3%"}}>자기 소개</text></div>
-                <div style={{width:"100%",height:"80%"}}>{curoverlayinfo.discription}</div>
+                <div style={{width:"25%",height:"100%", textAlign:"left"}}>자기소개</div>
+                <div style={{width:"75%",height:"100%",textAlign:"left"}}>{curoverlayinfo.discription}</div>
                 <div></div>
               </Overlay_text_large>
-              <Closebtn onClick={()=>{setoverlayinfo(false); setisoverlay(false);}}></Closebtn>
+              <Closebtn onClick={()=>{setoverlayinfo(false); setisoverlay(false);}}>닫기</Closebtn>
               
             </Overlay_container2>
           }
@@ -288,19 +291,23 @@ const Overlay_container2 = styled.div`
 
 const Overlay_img = styled.img`
 width:30%;
-height:20%;
-top:5%;
+height:18%;
+top:7%;
 left:60%;
 position:absolute;
+border-radius:8px;
 `
 
 const Overlay_title = styled.div`
 width:45%;
 height:15%;
-background-color:red;
 top:10%;
 left:10%;
 position:absolute;
+font-family: HakgyoansimChilpanjiugaeTTF-B;
+font-weight: 400;
+font-size: 16px;
+color:${theme.Sub1};
 `
 
 const Overlay_text = styled.div`
@@ -309,6 +316,7 @@ height:6%;
 left:10%;
 position:absolute;
 display:flex;
+flex-direction:row;
 align-items:center;
 font-family: Pretendard-Regular;
 font-weight: 400;
@@ -320,11 +328,21 @@ const Overlay_text_large = styled.div`
 width:80%;
 height:25%;
 left:10%;
+display:flex;
+flex-direction:row;
 position:absolute;
 top:60%;
 font-family: Pretendard-Regular;
   font-weight: 400;
   font-size: 16px;
+color:${theme.Sub1};
+ overflow-y: auto;
+scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE, Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 `
 
 const Closebtn = styled.div`
@@ -335,6 +353,10 @@ background-color:${theme.Sub1};
 position:absolute;
 top:87%;
 border-radius:8px;
+display: flex;
+align-items: center;
+justify-content:center;
+color:white;
 `
 
 
