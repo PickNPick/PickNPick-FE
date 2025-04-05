@@ -39,6 +39,7 @@ const InputBox = styled.input`
 
 const ImageButton = styled.img`
     height: 36px;
+    cursor: pointer;
 `;
 
 export default ChatBar;
