@@ -13,16 +13,13 @@ const FriendPage = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        // 사용자 이메일 가져오기 (로컬 스토리지에서 가져온다고 가정)
-        const userEmail = localStorage.getItem('userEmail');
+
 
         // 친구 목록 가져오기
         const fetchFriendList = async () => {
             try {
                 // API 호출
-                const response = await axiosInstance.post('/getfriendlist', {
-                    useremail: userEmail
-                });
+                const response = await axiosInstance.get('/getfriendlist');
 
                 // 데이터 확인
                 if (response.data && response.data.length > 0 && response.data[0].friends) {
@@ -39,12 +36,9 @@ const FriendPage = () => {
         };
 
         // 이메일이 있으면 친구 목록 가져오기
-        if (userEmail) {
-            fetchFriendList();
-        } else {
-            setLoading(false);
-            setError('로그인 정보를 찾을 수 없습니다.');
-        }
+
+        fetchFriendList();
+
     }, []);
 
     // 친구 추가 함수
@@ -60,9 +54,7 @@ const FriendPage = () => {
                     console.log(response.data);
 
                     // 친구 추가 후 목록 새로고침
-                    axiosInstance.post('/getfriendlist', {
-                        useremail: userEmail
-                    })
+                    axiosInstance.get('/getfriendlist')
                         .then(refreshResponse => {
                             if (refreshResponse.data && refreshResponse.data.length > 0) {
                                 setFriends(refreshResponse.data[0].friends);
