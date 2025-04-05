@@ -1,107 +1,249 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { theme } from "../styles/themes"; // 이미 설정한 theme 사용
+import { theme } from "../styles/themes";
+import axiosInstance from "../../api/axiosInstance";
 
-// 프로필 페이지 컴포넌트
 const ProfilePage = () => {
-  const [categorybtn, setCategoryBtn] = useState([0, 0, 1]); // 기본적으로 Profile 페이지가 활성화되도록 설정
-  const [isSinging, setIsSinging] = useState(false); // '노래 듣기' 상태
+  const [Name, setName] = useState("");
+  const [Mbti, setMbti] = useState("");
+  const [Schoolid, setSchoolid] = useState("");
+  const [Region, setRegion] = useState("");
+  const [Major, setMajor] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Discription, setDiscription] = useState("");
+  const [Profileimage, setProfileimage] = useState("");
+  const [Joinworldcup, setJoinworldcup] = useState(false);
+  const [Shortdiscription,setShortdiscription] = useState("");
+  const [file, setFile] = useState(null);
 
-  const [introText, setIntroText] = useState("귀여운 다람쥐"); // 자기소개 텍스트 상태
+  const fileInputRef = useRef(null);
 
-  const btnClick = (i) => {
-    if (i === 0) setCategoryBtn([1, 0, 0]);
-    else if (i === 1) setCategoryBtn([0, 1, 0]);
-    else setCategoryBtn([0, 0, 1]);
+  const handleToggle = () => setJoinworldcup(!Joinworldcup);
+
+  const handleFileChange = async (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    console.log("파일 선택됨:", selectedFile);
+    await uploadFile();
+  };
+
+  const uploadFile = async () => {
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await axiosInstance.post("http://localhost:3000/uploadimg", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("이미지 URL:", response.data.imageUrl);
+      setProfileimage(response.data.imageUrl);
+      alert("이미지 변경 선공")
+    } catch (err) {
+      console.error("업로드 실패", err);
+    }
+  };
+
+  const getdata = async () => {
+    try {
+      const result = await axiosInstance.get("http://localhost:3000/getmyinfo");
+      const datas = result.data;
+      setName(datas.name);
+      setEmail(datas.email);
+      setDiscription(datas.discription);
+      setShortdiscription(datas.shortdiscription);
+      setJoinworldcup(datas.joinworldcup);
+      setMajor(datas.major);
+      setRegion(datas.region);
+      setProfileimage(datas.profileImage);
+      setMbti(datas.mbti);
+      setSchoolid(datas.schoolid);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const savedata = async () => {
+    if (Name === "" || Major === "" || Schoolid === "") {
+      alert("이름,학과,학번은 필수 기재 사항입니다.");
+      return;
+    }
+    if (Discription.length > 500) {
+      alert("자기소개글은 500자 이하로만 적어주세요.");
+      return;
+    }
+    if(Shortdiscription.length >30){
+      alert("짧은소개글은 30자 이하로만 적어주세요.");
+      return;
+    }
+    const result = await axiosInstance.post("http://localhost:3000/updateinfo", {
+      email: Email,
+      name: Name,
+      major: Major,
+      mbti: Mbti,
+      schoolid: Schoolid,
+      region: Region,
+      discription: Discription,
+      joinworldcup: Joinworldcup,
+    });
+    alert("정보 변경 완료");
   };
 
   return (
     <Container>
-      {/* 상단 빨간색 바 */}
       <TopBar>
         <Title>Profile</Title>
       </TopBar>
 
-      {/* 첫 번째 하얀색 박스 */}
       <ProfileBox>
-        <TextArea
-          value={introText}
-          onChange={(e) => setIntroText(e.target.value)}
-          
+        <HiddenFileInput
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          onChange={handleFileChange}
         />
+        <CustomUploadButton onClick={() => fileInputRef.current.click()}>
+          <img style={{width:"100%",height:"100%" ,borderRadius:"8px"}} src={Profileimage}></img>
+        </CustomUploadButton>
+        <ProfileContainer>
+          <Namecontainer value={Name} onChange={(e) => setName(e.target.value)}></Namecontainer>
+          <Shortcontainer value={Shortdiscription} onChange={(e) => setShortdiscription(e.target.value)}></Shortcontainer>
+        </ProfileContainer>
       </ProfileBox>
 
-      {/* 두 번째 하얀색 박스 */}
-      <SecondProfileBox>
-        <TextArea
-          
+      <Textarea_small style={{ top: "32%" }}>
+        <Textarea_small_cate>학과</Textarea_small_cate>
+        <Textarea_small_text value={Major} onChange={(e) => setMajor(e.target.value)} />
+      </Textarea_small>
+
+      <Textarea_small style={{ top: "39%" }}>
+        <Textarea_small_cate>학번</Textarea_small_cate>
+        <Textarea_small_text value={Schoolid} onChange={(e) => setSchoolid(e.target.value)} />
+      </Textarea_small>
+
+      <Textarea_small style={{ top: "46%" }}>
+        <Textarea_small_cate>MBTI</Textarea_small_cate>
+        <Textarea_small_text value={Mbti} onChange={(e) => setMbti(e.target.value)} />
+      </Textarea_small>
+
+      <Textarea_small style={{ top: "53%" }}>
+        <Textarea_small_cate>지역</Textarea_small_cate>
+        <Textarea_small_text value={Region} onChange={(e) => setRegion(e.target.value)} />
+      </Textarea_small>
+
+      <Textarea_small style={{ top: "60%" }}>
+        <Textarea_small_cate>매칭 참가</Textarea_small_cate>
+        <SwitchContainer onClick={handleToggle} isOn={Joinworldcup}>
+          <SwitchBall isOn={Joinworldcup}>
+            <Label>{Joinworldcup ? "ON" : "OFF"}</Label>
+          </SwitchBall>
+        </SwitchContainer>
+      </Textarea_small>
+
+      <Textarea_Large style={{ top: "67%" }}>
+        <Textarea_Large_title>
+          <span style={{ marginLeft: "4%" }}>자기 소개</span>
+        </Textarea_Large_title>
+        <Textarea_Large_text
+          value={Discription}
+          onChange={(e) => setDiscription(e.target.value)}
         />
-      </SecondProfileBox>
+      </Textarea_Large>
 
-      {/* 세 번째 하얀색 박스 */}
-      <ThirdProfileBox>
-        <TextArea
-          
-        />
-      </ThirdProfileBox>
-
-      {/* 네 번째 하얀색 박스 */}
-      <FourthProfileBox>
-        <TextArea
-          
-        />
-      </FourthProfileBox>
-
-      {/* 다섯 번째 하얀색 박스 */}
-      <FifthProfileBox>
-        <TextArea
-          
-        />
-      </FifthProfileBox>
-
-      {/* 여섯 번째 하얀색 박스 */}
-      <SixthProfileBox>
-        <TextArea
-          
-        />
-      </SixthProfileBox>
-
-      {/* 일곱 번째 하얀색 박스 */}
-      <SeventhProfileBox>
-        <TextArea
-          
-        />
-      </SeventhProfileBox>
-
-      {/* 여덟 번째 하얀색 박스 */}
-      <EightProfileBox>
-        <TextArea
-          
-        />
-      </EightProfileBox>
-
-      {/* 프로필 정보 - 여기에 텍스트 제거 */}
-      <ProfileContainer>
-        <ProfileDetails>
-          {/* 모든 텍스트 항목을 제거했습니다 */}
-        </ProfileDetails>
-      </ProfileContainer>
-
-      {/* 하단 네비게이션 바 */}
-      <NavBar>
-        <NavButton clicked={categorybtn[0]} onClick={() => btnClick(0)}>
-          Pick!
-        </NavButton>
-        <NavButton clicked={categorybtn[1]} onClick={() => btnClick(1)}>
-          Chating
-        </NavButton>
-        <NavButton clicked={categorybtn[2]} onClick={() => btnClick(2)}>
-          Profile
-        </NavButton>
-      </NavBar>
+      <Savebtn onClick={savedata}>저장하기</Savebtn>
     </Container>
   );
 };
+
+const HiddenFileInput = styled.input`
+  display: none;
+`;
+
+const CustomUploadButton = styled.button`
+  width:35%;
+  height:80%;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+`;
+
+const ProfileContainer = styled.div`
+width:55%;
+height:80%;
+margin-left:5%;
+`
+
+const Namecontainer = styled.textarea`
+width:100%;
+height:50%;
+box-sizing: border-box;
+border:none;
+  resize: none;
+  overflow-y: auto; /* ✅ 수직 스크롤 자동 */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  font-size: 30px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  color: ${theme.Sub1};
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE, Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+`
+
+const Shortcontainer = styled.textarea`
+width:100%;
+height:50%;
+box-sizing: border-box;
+border:none;
+  resize: none;
+  overflow-y: auto; /* ✅ 수직 스크롤 자동 */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  font-size: 14px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  color: ${theme.Sub1};
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE, Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+`
+
+const ProfileBox = styled.div`
+  width: 80%; /* 최대 너비 설정 */
+  height: 18%;
+  background-color: white;
+  display: flex;
+  border-radius: 8px;
+  top:6%;
+  flex-direction:row;
+  display:flex;
+  align-items:center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+`;
 
 // 스타일링
 const Container = styled.div`
@@ -112,6 +254,160 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+const Savebtn = styled.div`
+position:absolute;
+width:80%;
+height:5%;
+top:93.5%;
+border-radius:30px;
+display: flex;
+justify-content:center;
+align-items: center;
+background-color:${theme.Sub1};
+font-size: 14px; /* 글자 크기 조정 */
+font-family: 'Pretendard', sans-serif;
+font-weight:700;
+color:white;
+&:hover{
+cursor:pointer;
+transition :0.3s ease;
+opacity:0.7;
+}
+`
+
+const Textarea_Large = styled.div`
+display:flex;
+flex-direction:column;
+border-radius: 8px;
+position:absolute;
+width:80%;
+height:25%;
+line-height: 1.5;
+letter-spacing: -0.5px;
+resize: none; /* 크기 조정 방지 */
+overflow: hidden; /* 넘칠 경우 스크롤 숨기기 */
+text-overflow: ellipsis; /* 넘친 텍스트 잘리게 처리 */
+word-wrap: break-word; /* 단어가 넘칠 때 자동으로 줄바꿈 처리 */
+background-color:white;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+`
+
+const Textarea_Large_title = styled.div`
+width: 100%;
+height: 20%;
+display:flex;
+align-items:center;
+font-size: 18px; /* 글자 크기 조정 */
+font-family: HakgyoansimChilpanjiugaeTTF-B;
+font-weight:400;
+color:${theme.Sub1}
+`
+const Textarea_Large_text = styled.textarea`
+  width: 92%;
+  height: 80%;
+  border: none;
+  margin-left: 4%;
+  box-sizing: border-box;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+  resize: none;
+  overflow-y: auto; /* ✅ 수직 스크롤 자동 */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  font-size: 14px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  color: ${theme.Sub1};
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE, Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+`;
+
+const Textarea_small = styled.div`
+display:flex;
+align-items:center;
+border-radius: 8px;
+position:absolute;
+width:80%;
+height:5%;
+background-color:white;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+`
+
+const Textarea_small_cate = styled.text`
+text-align:left;
+margin-left:4%;
+color:${theme.Sub1};
+width:20%;
+font-size: 18px; /* 글자 크기 조정 */
+font-family: HakgyoansimChilpanjiugaeTTF-B;
+font-weight:400;
+`
+const SwitchContainer = styled.div`
+  margin-left:59%;
+  width: 13%;
+  height: 76%;
+  background-color: ${props => (props.isOn ? `${theme.Sub1}` : '#dcdde1')};
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: background-color 0.3s ease;
+`;
+
+const SwitchBall = styled.div`
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: ${props => (props.isOn ? 'calc(100% - 26px)' : '4px')};
+  transition: left 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Label = styled.text`
+  position:absoulte;
+  width:100%;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: #2f3640;
+`;
+
+const Textarea_small_text = styled.textarea`
+margin-left:50%;
+border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+  resize: none; /* 크기 조정 방지 */
+  overflow: hidden; /* 넘칠 경우 스크롤 숨기기 */
+  text-overflow: ellipsis; /* 넘친 텍스트 잘리게 처리 */
+  word-wrap: break-word; /* 단어가 넘칠 때 자동으로 줄바꿈 처리 */
+  height:80%;
+  font-size: 14px; /* 글자 크기 조정 */
+  font-family: 'Pretendard', sans-serif;
+  font-weight:700;
+  color:${theme.Sub1};
+  &:focus {
+  border: none; /* 원하는 색상으로 바꿔줘요 */
+  outline: none;
+}
+`
 
 const TopBar = styled.div`
   width: 100%;
@@ -128,21 +424,11 @@ const TopBar = styled.div`
 const Title = styled.div`
   font-size: 2rem;
   font-weight: bold;
+  font-family:Dela Gothic One;
+  font-weight: 400;
+  font-size: 12.4px;
 `;
 
-const ProfileBox = styled.div`
-  width: 391px; /* 최대 너비 설정 */
-  height: 132px;
-  background-color: white;
-  display: flex;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 50px;
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  justify-content: center; /* 내용 중앙 정렬 */
-`;
 
 const LeftRightBox = styled.div`
   display: flex;
@@ -172,116 +458,6 @@ const TextArea = styled.textarea`
 `;
 
 
-
-const SecondProfileBox = styled.div`
-  width: 391px; /* 요청하신 313px 너비 */
-  height: 35px; /* 요청하신 44px 높이 */
-  background-color: white;
-  display: flex;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 12px; /* 첫 번째 박스와 간격 조정 */
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  justify-content: center; /* 내용 중앙 정렬 */
-`;
-
-const ThirdProfileBox = styled.div`
-  width: 391px; /* 요청하신 313px 너비 */
-  height: 35px; /* 요청하신 44px 높이 */
-  background-color: white;
-  display: flex;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 12px; /* 첫 번째 박스와 간격 조정 */
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  justify-content: center; /* 내용 중앙 정렬 */
-`;
-
-const FourthProfileBox = styled.div`
-  width: 391px; /* 요청하신 313px 너비 */
-  height: 35px; /* 요청하신 44px 높이 */
-  background-color: white;
-  display: flex;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 12px; /* 첫 번째 박스와 간격 조정 */
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  justify-content: center; /* 내용 중앙 정렬 */
-`;
-
-const FifthProfileBox = styled.div`
-  width: 391px; /* 요청하신 313px 너비 */
-  height: 35px; /* 요청하신 44px 높이 */
-  background-color: white;
-  display: flex;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 12px; /* 첫 번째 박스와 간격 조정 */
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  justify-content: center; /* 내용 중앙 정렬 */
-`;
-
-const SixthProfileBox = styled.div`
-  width: 391px; /* 요청하신 313px 너비 */
-  height: 35px; /* 요청하신 44px 높이 */
-  background-color: white;
-  display: flex;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 12px; /* 첫 번째 박스와 간격 조정 */
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  justify-content: center; /* 내용 중앙 정렬 */
-`;
-
-const SeventhProfileBox = styled.div`
-  width: 391px; /* 요청하신 313px 너비 */
-  height: 35px; /* 요청하신 44px 높이 */
-  background-color: white;
-  display: flex;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 12px; /* 첫 번째 박스와 간격 조정 */
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  justify-content: center; /* 내용 중앙 정렬 */
-`;
-
-const EightProfileBox = styled.div`
-  width: 391px; /* 요청하신 313px 너비 */
-  height: 93px; /* 요청하신 44px 높이 */
-  background-color: white;
-  display: flex;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 12px; /* 첫 번째 박스와 간격 조정 */
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  justify-content: center; /* 내용 중앙 정렬 */
-`;
-
-const ProfileContainer = styled.div`
-  width: 100%;
-  flex-grow: 1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: ${theme.Main};
-  overflow: auto;
-`;
-
 const ProfileDetails = styled.div`
   width: 100%;
   padding: 10px;
@@ -289,33 +465,4 @@ const ProfileDetails = styled.div`
   flex-direction: column;
   gap: 15px;
 `;
-
-const NavBar = styled.div`
-  width: 100%;
-  height: 10%;
-  background-color: white;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 20px 20px 0 0;
-`;
-
-const NavButton = styled.button`
-  all: unset;
-  width: 30%;
-  height: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${props => (props.clicked ? theme.Sub1 : theme.Sub2)};
-  font-family: Dela Gothic One;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${props => (props.clicked ? theme.Sub1 : "lightgray")};
-  }
-`;
-
 export default ProfilePage;
