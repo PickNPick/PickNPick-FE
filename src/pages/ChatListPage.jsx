@@ -3,6 +3,7 @@ import ToggleBar from '../components/ToggleBar';
 import TestImage from '../assets/testimage.png';
 import UserListItem from '../components/UserListItem';
 import UserRequestItem from '../components/UserRequestItem';
+import ChatBubble from '../components/ChatBubble';
 
 const ChatListPage = () => {
     const [toggleIdx, setToggleIdx] = useState(0);
@@ -33,6 +34,10 @@ const ChatListPage = () => {
             onAccept={onAccept} onDecline={onDecline} />
         <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
             onAccept={onAccept} onDecline={onDecline} />
+
+        <ChatBubble isMe={true} message="안녕하세요 테스트 메시지입니다." />
+        <ChatBubble isMe={false} message="안녕하세요 테스트 메시지입니다." profileImage={TestImage} />
+        <ChatBubble isMe={false} message="안녕하세요 테스트 메시지입니다." profileImage={TestImage} />
     </>
 }
 
