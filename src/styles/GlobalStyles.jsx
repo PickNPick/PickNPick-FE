@@ -22,7 +22,7 @@ body, html, #root {
     width:100%;
     max-width: 500px;
     margin: 0 auto;
-    background-color: #FFF1E6;
+    background-color:#FFFBF8;
   }
 `;
 export default GlobalStyles;
