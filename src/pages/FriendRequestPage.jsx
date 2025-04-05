@@ -10,7 +10,7 @@ const FriendRequestPage = ({onAccept, onDecline}) => {
         <div style={{ marginBottom: '16px' }}>
             <EmailSearchBar/>
         </div>
-        <Container>
+        <ScrollContainer>
             <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
             onAccept={onAccept} onDecline={onDecline} />
             <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
@@ -31,14 +31,20 @@ const FriendRequestPage = ({onAccept, onDecline}) => {
             onAccept={onAccept} onDecline={onDecline} />
             <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
             onAccept={onAccept} onDecline={onDecline} />
-        </Container>
+        </ScrollContainer>
     </>
 }
 
-const Container = styled.div`
-    flex-grow: 1;
-    overflow-y: scroll;
-    padding: 10px 30px;
-`
-
 export default FriendRequestPage;
+
+const ScrollContainer = styled.div`
+  flex-grow: 1;
+  overflow-y: scroll;
+  padding: 10px 30px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
