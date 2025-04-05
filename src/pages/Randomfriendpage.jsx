@@ -50,6 +50,20 @@ const Randomfriendpage = () => {
     }
   };
 
+  const sendmessage = async () => {
+    try {
+        const datas = await axiosInstance.post("http://localhost:3000/addfriend",{
+            friendemail:curoverlayinfo.email
+        })
+        console.log(datas)
+        alert("친구요청완료")
+    }
+    catch(err){
+        console.error(err)
+        alert("친구요청실패")
+    }
+}
+
   
 
   return (
