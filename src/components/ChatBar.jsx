@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PlusButton from '../assets/plusbutton.svg';
 import SendButton from '../assets/chat_send_bt.svg';
+import ActiveSendButton from '../assets/chat_sent_bt.svg';
 
 const ChatBar = ({onChat}) => {
     const [text, setText] = useState('');
@@ -10,7 +11,9 @@ const ChatBar = ({onChat}) => {
     }
 
     const onSendButtonClicked = () => {
-        onChat(text);
+        if (text !== '')
+            onChat(text);
+
         setText('');
     }
 
@@ -25,7 +28,7 @@ const ChatBar = ({onChat}) => {
 
         <InputBox type="text" onChange={onChange} value={text} onKeyDown={onKeyPressed} />
 
-        <ImageButton src={SendButton} onClick={onSendButtonClicked} />
+        <ImageButton src={text === '' ? SendButton : ActiveSendButton} onClick={onSendButtonClicked} />
     </Container>
 }
 
