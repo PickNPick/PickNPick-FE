@@ -94,7 +94,6 @@ const ProfilePage = () => {
       region: Region,
       discription: Discription,
       joinworldcup: Joinworldcup,
-      shortdiscription:Shortdiscription,
     });
     alert("정보 변경 완료");
   };
@@ -198,10 +197,12 @@ border:none;
   word-wrap: break-word;
   font-size: 30px;
   font-family: 'Pretendard', sans-serif;
+  letter-spacing: -1px;
   font-weight: 700;
   color: ${theme.Sub1};
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE, Edge */
+  background-color: transparent;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -228,10 +229,12 @@ border:none;
   word-wrap: break-word;
   font-size: 14px;
   font-family: 'Pretendard', sans-serif;
+  letter-spacing: -.4px;
   font-weight: 700;
   color: ${theme.Sub1};
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE, Edge */
+  background-color: transparent;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -257,8 +260,9 @@ const ProfileBox = styled.div`
   flex-direction:row;
   display:flex;
   align-items:center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
   position: relative;
+  letter-spacing: -.4px;
 `;
 
 // 스타일링
@@ -306,7 +310,7 @@ overflow: hidden; /* 넘칠 경우 스크롤 숨기기 */
 text-overflow: ellipsis; /* 넘친 텍스트 잘리게 처리 */
 word-wrap: break-word; /* 단어가 넘칠 때 자동으로 줄바꿈 처리 */
 background-color:white;
-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
 `
 
 const Textarea_Large_title = styled.div`
@@ -317,7 +321,7 @@ align-items:center;
 font-size: 18px; /* 글자 크기 조정 */
 font-family: HakgyoansimChilpanjiugaeTTF-B;
 font-weight:400;
-color:${theme.Sub1}
+color:${theme.Sub1};
 `
 const Textarea_Large_text = styled.textarea`
   width: 92%;
@@ -332,11 +336,12 @@ const Textarea_Large_text = styled.textarea`
   text-overflow: ellipsis;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Pretendard variable';
   font-weight: 700;
   color: ${theme.Sub1};
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE, Edge */
+  background-color: transparent;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -360,7 +365,7 @@ position:absolute;
 width:80%;
 height:5%;
 background-color:white;
-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
 `
 
 const Textarea_small_cate = styled.text`
@@ -371,6 +376,7 @@ width:20%;
 font-size: 18px; /* 글자 크기 조정 */
 font-family: HakgyoansimChilpanjiugaeTTF-B;
 font-weight:400;
+background-color: transparent;
 `
 const SwitchContainer = styled.div`
   margin-left:59%;
@@ -414,7 +420,7 @@ border: none;
   border-radius: 8px;
   box-sizing: border-box;
   line-height: 1.5;
-  letter-spacing: -0.5px;
+  letter-spacing: -.4px;
   resize: none; /* 크기 조정 방지 */
   overflow: hidden; /* 넘칠 경우 스크롤 숨기기 */
   text-overflow: ellipsis; /* 넘친 텍스트 잘리게 처리 */
@@ -424,6 +430,7 @@ border: none;
   font-family: 'Pretendard', sans-serif;
   font-weight:700;
   color:${theme.Sub1};
+  background-color: transparent;
   &:focus {
   border: none; /* 원하는 색상으로 바꿔줘요 */
   outline: none;
@@ -438,7 +445,7 @@ border: none;
 const TopBar = styled.div`
   width: 100%;
   height: 52px;
-  background-color: #FF5A6D;
+  background-color: #FF5a6d;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -452,7 +459,7 @@ const Title = styled.div`
   font-weight: bold;
   font-family:Dela Gothic One;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 12.4px;
 `;
 
 
@@ -469,7 +476,7 @@ const TextArea = styled.textarea`
   font-size: 14px; /* 글자 크기 조정 */
   font-family: 'Pretendard', sans-serif;
   background-color: #fff;
-  color: #FF5A6D;
+  color: #FF5a6d;
   padding: 8px;
   border: none;
   border-radius: 8px;
@@ -481,6 +488,7 @@ const TextArea = styled.textarea`
   overflow: hidden; /* 넘칠 경우 스크롤 숨기기 */
   text-overflow: ellipsis; /* 넘친 텍스트 잘리게 처리 */
   word-wrap: break-word; /* 단어가 넘칠 때 자동으로 줄바꿈 처리 */
+  background-color: transparent;
 `;
 
 

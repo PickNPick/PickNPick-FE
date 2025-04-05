@@ -7,16 +7,15 @@ import Randomfriendpage from "../pages/Randomfriendpage"
 import MessagePage from "../pages/MessagePage";
 import Myfavorite from "../pages/Myfavorite";
 
-
 const routes = [
     {
-        path:"/",
-        element:<Loginpage/>
+        path: "/",
+        element: <Loginpage />
     },
     {
-        path:"/mainpage",
-        element:<Mainpage/>,
-        children:[
+        path: "/mainpage",
+        element: <Mainpage />,
+        children: [
 
         ]
     },
@@ -29,21 +28,23 @@ const routes = [
         element: <ProfilePage />
     },
     {
-        path:"/worldcup",
-        element : <Worldcuppage/>
+        path: "/worldcup",
+        element: <Worldcuppage />
     },
     {
-        path:"/randomfriend",
-        element : <Randomfriendpage/>
+        path: "/randomfriend",
+        element: <Randomfriendpage />
     },
     {
-        path: "/message",
+        path: "/message/:roomId",
         element: <MessagePage />
     },
+
     {
         path:"/myfavorite",
         element:<Myfavorite/>
     }
+
 ]
 
 export default routes

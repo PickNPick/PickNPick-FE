@@ -21,6 +21,8 @@ const Container = styled.div`
     padding: 20px;
     gap: 20px;
     align-items: center;
+
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
 `;
 
 const ProfileImg = styled.img`
