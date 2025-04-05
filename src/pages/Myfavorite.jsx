@@ -34,9 +34,11 @@ const Myfavorite = () => {
                 friendemail:curoverlayinfo.email
             })
             console.log(datas)
+            alert("친구요청완료")
         }
         catch(err){
             console.error(err)
+            alert("친구요청실패")
         }
     }
 
