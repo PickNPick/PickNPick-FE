@@ -54,7 +54,7 @@ const MessagePage = () => {
         <MessageBox>
             <div style={{height: '25px'}} />
 
-            {sampleMessage.map(({isMe, message, isLast}) => <ChatBubble isMe={isMe} profileImage={TestImage} message={message} isLast={isLast}/>)}
+            {sampleMessage.map(({isMe, message, isLast}, idx) => <ChatBubble key={idx} isMe={isMe} profileImage={TestImage} message={message} isLast={isLast}/>)}
 
             <div ref={lastRef} />
 
