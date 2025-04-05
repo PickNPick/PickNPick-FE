@@ -1,6 +1,7 @@
 import ChatListPage from "../pages/ChatListPage"
 import Loginpage from "../pages/Loginpage"
 import Mainpage from "../pages/Mainpage"
+import ProfilePage from "../pages/ProfilePage";
 
 
 
@@ -19,6 +20,10 @@ const routes = [
     {
         path: "/chat",
         element: <ChatListPage />
+    },
+    {
+        path: "/profile",
+        element: <ProfilePage />
     }
 
 ]
