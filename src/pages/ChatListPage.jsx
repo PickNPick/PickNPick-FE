@@ -3,12 +3,11 @@ import ToggleBar from '../components/ToggleBar';
 import TestImage from '../assets/testimage.png';
 import UserListItem from '../components/UserListItem';
 import UserRequestItem from '../components/UserRequestItem';
-import ChatBubble from '../components/ChatBubble';
 import '../ChatListPage.css'
 import styled from "styled-components"
 import { theme } from "../styles/themes"
 import '../styles/fonts.css'
-
+import EmailSearchBar from '../components/EmailSearchBar';
 
 const ChatListPage = () => {
     const [toggleIdx, setToggleIdx] = useState(0);
@@ -27,13 +26,23 @@ const ChatListPage = () => {
 
     return <>
 
-        <Bannerbar>chating</Bannerbar>
+        <Bannerbar>Chating</Bannerbar>
 
-        <ToggleBar list={['친구', '메세지', '요청']} selectedIdx={toggleIdx}
-            onclick={onclick} />
+        <div style={{ marginBottom: '16px' }}>
+            <ToggleBar
+                list={['친구', '메세지', '요청']}
+                selectedIdx={toggleIdx}
+                onclick={onclick}
+        />
+        </div>
+
+        
 
         {toggleIdx === 0 && (
             <div>
+                <div style={{ marginBottom: '16px' }}>
+            <EmailSearchBar/>
+        </div>
                 <div className="chat-list-container">
                     <UserListItem name="사용자 이름" profile={TestImage} />
                 </div>
@@ -52,6 +61,9 @@ const ChatListPage = () => {
 
         {toggleIdx === 2 && (
             <div>
+                <div style={{ marginBottom: '16px' }}>
+                  <EmailSearchBar/>
+                </div>
                 <div className="chat-list-container">
                     <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
                     onAccept={onAccept} onDecline={onDecline} />
@@ -79,11 +91,14 @@ export default ChatListPage;
 
 
 const Bannerbar = styled.div`
+font-family: 'Dela Gothic One', sans-serif;
+font-size: 15px;
 width:100%;
-height:10%;
+height:9%;
 background-color:${theme.Sub1};
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
+margin-bottom: 16px; 
 `

@@ -18,6 +18,7 @@ const UserRequestItem = ({name, profile, explain, onAccept, onDecline}) => {
 }
 
 const ItemDiv = styled.div`
+    width:100%;
     position: relative;
 
     display: flex;
@@ -31,40 +32,40 @@ const InnerDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 2px;
-
-    >div {
-        display: flex;
-        flex-direction: row;
-        gap: 5px;
-    }
+    gap: 0px;
 `;
 
 const ProfileImage = styled.img`
-    width: 21%;
+    width: 18%;
     border-radius: 50%;
 `;
 
 const UserName = styled.div`
     font-size: 1.5rem;
+    font-family: 'HakgyoansimChilpanjiugaeTTF-B';
 `;
 
 const ExplainBox = styled.div`
     font-size: 1rem;
+    font-family: 'Pretendard-Regular'; 
+    margin-bottom: 2px;
 `;
 
 const ColorButton = styled.button`
-    background-color: #FF6B6B;
+    background-color: #FF5A6D;
     color: #FFFFFF;
     font-size: 0.8rem;
+    font-family: 'Pretendard-Regular';
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+    margin-right: 4px;
 `;
 
 const WhiteButton = styled.button`
     background-color: #FFFFFF;
-    color: #FF6B6B;
+    color: #FF5A6D;
     font-size: 0.8rem;
+    font-family: 'Pretendard-Regular';
     padding-left: 1.25rem;
     padding-right: 1.25rem;
 `;
