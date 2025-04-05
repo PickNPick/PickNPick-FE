@@ -38,6 +38,8 @@ const ChatListPage = () => {
         <ChatBubble isMe={true} message="안녕하세요 테스트 메시지입니다." />
         <ChatBubble isMe={false} message="안녕하세요 테스트 메시지입니다." profileImage={TestImage} />
         <ChatBubble isMe={false} message="안녕하세요 테스트 메시지입니다." profileImage={TestImage} />
+        <ChatBubble isMe={false} message="긴 말풍선 테스트 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세" profileImage={TestImage} />
+        <ChatBubble isMe={true} message="긴 말풍선 테스트 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세" profileImage={TestImage} />
     </>
 }
 

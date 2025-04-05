@@ -14,6 +14,7 @@ const ChatBubble = ({isMe, message, profileImage}) => {
             <OtherDiv>
                 {message}
             </OtherDiv>
+            <Placeholder />
         </>}
     </OuterDiv>
 }
@@ -40,6 +41,7 @@ const MeDiv = styled.div`
 
     background-color: #FF6B6B;
     border-radius: 25px;
+    text-align: right;
 `;
 
 const OtherDiv = styled.div`
@@ -49,6 +51,7 @@ const OtherDiv = styled.div`
 
     background-color: #FFFFFF;
     border-radius: 25px;
+    text-align: left;
 `
 
 const Placeholder = styled.div`
