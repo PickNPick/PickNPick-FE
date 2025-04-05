@@ -70,7 +70,7 @@ align-items:center;
 justify-content:center;
 color:white;
 margin-bottom: 16px; 
-margin-top: 30px;
+margin-top: 33px;
 `
 
 export default ChatListPage;
