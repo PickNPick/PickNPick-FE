@@ -6,8 +6,11 @@ import ChatBubble from '../components/ChatBubble';
 import ChatBar from '../components/ChatBar';
 import { IoEllipseSharp } from 'react-icons/io5';
 import { theme } from "../styles/themes";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 const MessagePage = () => {
+    const navigate = useNavigate();
 
     const SAMPLE_MESSAGE = [
         {isMe: true, message: "달빛에 두 눈을 적셔, 내 손을 잡고 어디론가 뛰어줘."},
@@ -45,9 +48,17 @@ const MessagePage = () => {
         else
             sampleMessage[i].isLast = false;
     }
+    const clickback = () => {
+        navigate(-1);
+      }
 
     return <Container>
-        <Bannerbar>Chatting</Bannerbar>
+     
+
+        <Topbar>
+                <MdOutlineArrowBackIosNew onClick={() => { clickback() }} style={{ position: "absolute", left: "4%", color: `white` }} />
+                Chatting
+        </Topbar>
 
         <MessageTitleBox profile={TestImage} title="이동현" subtitle="활동 중" />
 
@@ -78,29 +89,33 @@ const MessagePage = () => {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    font-family: 'Pretendard-Regular';
     height: 100%;
 `;
 
 const MessageBox = styled.div`
     display: flex;
     flex-direction: column;
+    font-family: 'Pretendard-Regular';
     gap: 4px;
 
     flex-grow: 1;
     overflow-y: scroll;
 `;
 
-// 추후 밖으로 뺄 예정
-const Bannerbar = styled.div`
-font-family: 'Dela Gothic One', sans-serif;
-font-size: 15px;
-width:100%;
-height:9%;
-background-color:${theme.Sub1};
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
+const Topbar = styled.div`
+
+  width: 100%;
+  height: 10%;
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 15px;
+  background-color: #FF5A6D;
+  display: flex;
+  align-items: center;
+  position:relative;
+  justify-content:center;
+  margin-top: 33px;
+  color:white;
 `;
 
 export default MessagePage;
