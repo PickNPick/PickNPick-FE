@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import MessageListItem from '../components/MessageListItem';
 import styled from 'styled-components';
-import TestImage from '../assets/testimage.png';
+import TestImage from '../assets/initialimage.jpg';
+//import TestImage from '../assets/testimage.png';
 import socket from '../components/socket';
 import { useNavigate } from 'react-router-dom';
 

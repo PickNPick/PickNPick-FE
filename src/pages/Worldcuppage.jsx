@@ -151,7 +151,10 @@ const Worldcuppage = () => {
         <Overlay>
           {!overlayinfo &&
             <Overlay_container>
-            <div style={{ color: 'black', fontWeight: "700", width: "100%", height: "70%", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid grey" }}>이상형 월드컵을 그만하시겠습니까?</div>
+            <div style={{ color: 'black', fontSize: '1.1rem', width: "100%", height: "70%", display: "flex", flexDirection: 'column', alignItems: "center", justifyContent: "center", borderBottom: "1px solid grey" }}>
+              이상형 월드컵을 그만하시겠습니까? <br/>
+              <div style={{fontSize: '0.75rem'}}>해당 이상형 월드컵 기록은 저장되지 않습니다.</div>
+            </div>
             <div style={{ color: 'black', width: "100%", height: "30%", display: "flex", flexDirection: "row" }}>
               <div style={{ width: "50%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => { setisoverlay(false) }}>계속하기</div>
               <div style={{ color: `${theme.Sub1}`, width: "50%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", borderLeft: "1px solid grey" }} onClick={(() => {

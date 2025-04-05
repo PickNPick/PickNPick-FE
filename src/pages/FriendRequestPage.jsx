@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import TestImage from '../assets/testimage.png';
+//import TestImage from '../assets/testimage.png';
+import TestImage from '../assets/initialimage.jpg';
 import EmailSearchBar from '../components/EmailSearchBar';
 import UserRequestItem from '../components/UserRequestItem';
 import axiosInstance from '../../api/axiosInstance';

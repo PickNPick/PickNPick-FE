@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import TestImage from '../assets/testimage.png';
+//import TestImage from '../assets/testimage.png';
+import TestImage from '../assets/initialimage.jpg';
 import MessageTitleBox from '../components/MessageTitleBox';
 import ChatBubble from '../components/ChatBubble';
 import ChatBar from '../components/ChatBar';
