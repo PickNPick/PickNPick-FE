@@ -10,6 +10,9 @@ import { theme } from "../styles/themes"
 import '../styles/fonts.css'
 import EmailSearchBar from '../components/EmailSearchBar';
 import MessageListItem from '../components/MessageListItem';
+import FriendPage from './FriendPage';
+import MessageListPage from './MessageListPage';
+import FriendRequestPage from './FriendRequestPage';
 
 const ChatListPage = () => {
     const [toggleIdx, setToggleIdx] = useState(0);
@@ -29,7 +32,7 @@ const ChatListPage = () => {
 
     return <>
     
-      <Bannerbar>Chatting</Bannerbar>
+        <Bannerbar>Chatting</Bannerbar>
     
 
         <div style={{ marginBottom: '16px' }}>
@@ -40,59 +43,21 @@ const ChatListPage = () => {
         />
         </div>
 
-        
-
         {toggleIdx === 0 && (
-            <div>
-                <div style={{ marginBottom: '16px' }}>
-            <EmailSearchBar/>
-        </div>
-                <div className="chat-list-container">
-                    <UserListItem name="사용자 이름" profile={TestImage} />
-                </div>
-                <div className="chat-list-container">
-                    <UserListItem name="사용자 이름" profile={TestImage} />
-                </div>
-            </div>
+            <FriendPage />
         )}
 
         {toggleIdx === 1 && (
-            <MessageListBox>
-                <MessageListItem name="사용자 이름" profile={TestImage} explain="안녕! 나는 이동현이라고 해." onClick={() => navigate('/message')} />
-                <MessageListItem name="사용자 이름2" profile={TestImage} explain="ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ" />
-            </MessageListBox>
+            <MessageListPage />
         )}
 
         {toggleIdx === 2 && (
-            <div>
-                <div style={{ marginBottom: '16px' }}>
-                    <EmailSearchBar/>
-                </div>
-                <div className="chat-list-container">
-                    <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-                    onAccept={onAccept} onDecline={onDecline} />
-                </div>
-                <div className="chat-list-container">
-                    <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-                    onAccept={onAccept} onDecline={onDecline} />
-                </div>
-                <div className="chat-list-container">
-                    <UserRequestItem name="사용자 이름" profile={TestImage} explain="랜덤 매칭을 통해 요청했습니다." 
-                    onAccept={onAccept} onDecline={onDecline} />
-                </div>
-            </div>
+            <FriendRequestPage onAccept={onAccept} onDecline={onDecline} />
         )}
 
 
     </>
 }
-
-const MessageListBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 10px 30px;
-`;
 
 const Bannerbar = styled.div`
 font-family: 'Dela Gothic One', sans-serif;
