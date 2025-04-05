@@ -10,7 +10,6 @@ import random from '../assets/pickimg/random.svg';
 
 
 const Pickpage = ()=>{
-
     const img = logoimg
     const navigator = useNavigate();
 
@@ -36,7 +35,7 @@ const Pickpage = ()=>{
         <img
           src={pick}
           style={{ width: "80%", cursor: "pointer" }}
-          onClick={() => navigate("/picknpick")}
+          onClick={() => {}}
           alt="Pick & Pick"
         />
       </Container>
