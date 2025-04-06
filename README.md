@@ -1,4 +1,4 @@
-# [logoimg](https://github.com/user-attachments/assets/0902ccfa-05fb-4b5e-969c-168cea83d21d) Pick & Pick!
+# https://avatars.githubusercontent.com/u/205436439?s=200&v=4 Pick & Pick!
 
 
 교내생들을 위한 **랜덤 매칭 플랫폼**  
