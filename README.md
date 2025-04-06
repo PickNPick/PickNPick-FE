@@ -1,7 +1,6 @@
-<div style="display: flex; align-items: center;">
-  <img src="./src/assets/loginpageimg/logoimg.png" height="100"/>
-  <span style="font-size: 36px; margin-left: 12px;">Pick & Pick</span>
-</div>
+| ![](./src/assets/loginpageimg/logoimg.png){height=80px} | <span style="font-size: 28px;">Pick & Pick</span> |
+|---|---|
+
 
 
 교내생들을 위한 **랜덤 매칭 플랫폼**  
