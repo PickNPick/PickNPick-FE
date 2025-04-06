@@ -1,4 +1,4 @@
-<img src="./src/assets/loginpageimg/logoimg.png" width:50 height:50></img? ##Pick & Pick!
+<img src="./src/assets/loginpageimg/logoimg.png" width="50"/> ##Pick & Pick!
 
 
 교내생들을 위한 **랜덤 매칭 플랫폼**  
