@@ -1,10 +1,5 @@
-<table>
-  <tr>
-    <td><img src="./src/assets/loginpageimg/logoimg.png" height="80"/></td>
-    <td><strong style="font-size: 28px;">Pick & Pick</strong></td>
-  </tr>
-</table>
-
+<h3>Pick & Pick</h3>
+---
 
 
 교내생들을 위한 **랜덤 매칭 플랫폼**  
