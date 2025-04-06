@@ -1,4 +1,4 @@
-# https://avatars.githubusercontent.com/u/205436439?s=200&v=4 Pick & Pick!
+![logoimg.png](./src/assets/loginpageimg/logoimg.png) Pick & Pick!
 
 
 교내생들을 위한 **랜덤 매칭 플랫폼**  
@@ -24,14 +24,13 @@
 
 - 프로필 이상형월드컵을 통해 나만의 이상형 검색 **실시간 매칭**
 - 매칭된 사용자들과 **채팅방 생성**
-- 원하는 모임 카테고리를 **탐색 및 필터링**
 - 매칭 내역 및 채팅 기록 확인
 
 ## 👥 팀원 소개
 
 | 프로필 | 이름 | 역할 |
 |-------|------|------|
-| <a href="https://github.com/5eungwon"><img src="https://github.com/5eungwon.png" width="50"/></a> | [@5eungwon](https://github.com/5eungwon) | 역할을 여기에 입력하세요 |
-| <a href="https://github.com/ldhhello"><img src="https://github.com/ldhhello.png" width="50"/></a> | [@ldhhello](https://github.com/ldhhello) | 역할을 여기에 입력하세요 |
-| <a href="https://github.com/ssssssssssssu"><img src="https://github.com/ssssssssssssu.png" width="50"/></a> | [@ssssssssssssu](https://github.com/ssssssssssssu) | 역할을 여기에 입력하세요 |
-| <a href="https://github.com/jngyeon125"><img src="https://github.com/jngyeon125.png" width="50"/></a> | [@jngyeon125](https://github.com/jngyeon125) | 역할을 여기에 입력하세요 |
+| <a href="https://github.com/5eungwon"><img src="https://github.com/5eungwon.png" width="50"/></a> | [@5eungwon](https://github.com/5eungwon) | 로그인페이지 & 메인페이지 & 이상형 월드컵(로직,페이지) 프로필페이지 구현 |
+| <a href="https://github.com/ldhhello"><img src="https://github.com/ldhhello.png" width="50"/></a> | [@ldhhello](https://github.com/ldhhello) | 친구요청목록 & 채팅페이지 구현 |
+| <a href="https://github.com/ssssssssssssu"><img src="https://github.com/ssssssssssssu.png" width="50"/></a> | [@ssssssssssssu](https://github.com/ssssssssssssu) | 친구목록페이지구현 |
+| <a href="https://github.com/jngyeon125"><img src="https://github.com/jngyeon125.png" width="50"/></a> | [@jngyeon125](https://github.com/jngyeon125) | 프로필페이지 구현 |
