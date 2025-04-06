@@ -1,8 +1,15 @@
-# React + Vite
+# 📱 Pick & Pick
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+대학생들을 위한 **실시간 모임 매칭 플랫폼**  
+스터디, 술자리, 공모전 등 원하는 카테고리를 선택하면  
+같은 관심사를 가진 사람들과 자동으로 매칭되어 **즉시 대화방에서 소통**할 수 있어요!
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧩 주요 기능
+
+- 🎯 관심 카테고리 선택 후 **실시간 매칭**
+- 💬 자동 매칭된 사용자들과 **채팅방 생성**
+- 🔍 원하는 모임 카테고리를 **탐색 및 필터링**
+- 🕒 매칭 내역 및 채팅 기록 확인
+- 🚫 부적절한 사용자 신고 및 차단 기능
