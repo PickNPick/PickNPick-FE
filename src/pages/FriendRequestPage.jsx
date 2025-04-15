@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import TestImage from '../assets/initialimage.jpg';
 import EmailSearchBar from '../components/EmailSearchBar';
 import UserRequestItem from '../components/UserRequestItem';
-import axiosInstance from '../../api/axiosInstance';
+import axiosInstance from '../api/axiosInstance';
 
 const FriendRequestPage = ({ onAccept, onDecline }) => {
     const [friendRequests, setFriendRequests] = useState([]);

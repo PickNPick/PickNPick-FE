@@ -4,7 +4,7 @@ import EmailSearchBar from '../components/EmailSearchBar';
 import UserListItem from '../components/UserListItem';
 import TestImage from '../assets/initialimage.jpg';
 //import TestImage from '../assets/testimage.png';
-import axiosInstance from '../../api/axiosInstance';
+import axiosInstance from '../api/axiosInstance';
 import styled from 'styled-components';
 import socket from '../components/socket';
 

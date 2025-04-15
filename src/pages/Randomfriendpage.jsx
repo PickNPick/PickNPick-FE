@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { theme } from "../styles/themes";
 import logoimg from "../assets/loginpageimg/logoimg.png";
 import loadingimg from "../assets/loadingimg/loadingimg.png";
-import axiosInstance from "../../api/axiosInstance";
+import axiosInstance from "../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
