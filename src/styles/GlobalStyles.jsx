@@ -15,13 +15,14 @@ body, html, #root {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Pretendard";
+    font-family: "Pretendard variable";
   }
   #root {
+    overflow:hidden;
     width:100%;
     max-width: 500px;
     margin: 0 auto;
-    background-color: #FFF1E6;
+    background-color:#FFFBF8;
   }
 `;
 export default GlobalStyles;

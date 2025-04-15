@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const UserRequestItem = ({name, profile, explain, onAccept, onDecline}) => {
-    return <ItemDiv>
+const MessageListItem = ({name, profile, explain, onClick}) => {
+    return <ItemDiv onClick={onClick}>
         <ProfileImage src={profile}/>
         <InnerDiv>
             <UserName>{name}</UserName>
             <ExplainBox>{explain}</ExplainBox>
-            <div>
-                <ColorButton onClick={onAccept}>수락</ColorButton>
-                <WhiteButton onClick={onDecline}>거절</WhiteButton>
-            </div>
         </InnerDiv>
 
         <TimeBox>12:34</TimeBox>
@@ -79,4 +75,4 @@ const TimeBox = styled.div`
     font-size: 0.75rem;
 `;
 
-export default UserRequestItem;
+export default MessageListItem;
