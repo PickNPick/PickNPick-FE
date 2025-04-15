@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../styles/themes";
-import axiosInstance from "../../api/axiosInstance";
+import axiosInstance from "../api/axiosInstance";
 import initialimg from "../assets/initialimage.jpg"
 
 const ProfilePage = () => {
